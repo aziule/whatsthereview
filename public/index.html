@@ -10,33 +10,10 @@
     <script type="text/javascript" src="lib/double-metaphone.js"></script>
     <script type="text/javascript" src="movie/model.js"></script>
     <script type="text/javascript" src="movie/transformer.js"></script>
-    <script type="text/javascript" src="api.js"></script>
-    <script type="text/javascript" src="movie/matcher.js"></script>
-    <script type="text/javascript" src="movie/score.js"></script>
+    <script type="text/javascript" src="api/client.js"></script>
+    <script type="text/javascript" src="score/evaluator.js"></script>
+    <script type="text/javascript" src="score/fetcher.js"></script>
     <script type="text/javascript" src="speech/listener.js"></script>
-
-    <script>
-        var apiDataTransformer = new ApiDataTransformer();
-        var apiClient = new ApiClient(apiDataTransformer);
-        var doubleMetaphone = new DoubleMetaphone();
-        var movieMatcher = new MovieMatcher(doubleMetaphone);
-        var movieScoreFetcher = new MovieScoreFetcher(apiClient, movieMatcher);
-        var speechListener = new SpeechListener(movieScoreFetcher);
-
-        var btnListen = document.getElementById('listen');
-        btnListen.onclick = function() {
-            speechListener
-                .listen()
-                .then(function(transcript) {
-                    console.log(transcript);
-                })
-                .catch(function(error) {
-                    console.error(error); // render error here
-                });
-        };
-
-
-        // movieScoreFetcher.getMovieScore('snatch');    
-    </script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

@@ -1,17 +1,17 @@
-function MovieScoreFetcher(apiClient, movieMatcher) {
+function ScoreFetcher(apiClient, evaluator) {
     if (typeof apiClient.queryApi !== 'function') {
         throw 'apiClient must implement the queryApi method';
     }
 
-    if (typeof movieMatcher.updateMatchingScore !== 'function') {
-        throw 'movieMatcher must implement the matchMovieAgainstList method';
+    if (typeof evaluator.evaluateMatchingScore !== 'function') {
+        throw 'evaluator must implement the evaluateMatchingScore method';
     }
 
     this.apiClient = apiClient;
-    this.movieMatcher = movieMatcher;
+    this.evaluator = evaluator;
 };
 
-MovieScoreFetcher.prototype.getMovieScore = function(name) {
+ScoreFetcher.prototype.getMovieScore = function(name) {
     var self = this;
 
     this.apiClient.queryApi(name)
@@ -24,10 +24,10 @@ MovieScoreFetcher.prototype.getMovieScore = function(name) {
 }
 
 var processMovies = function(query, movies) {
-    var matchedMovies = this.movieMatcher.updateMatchingScore(query, movies);
+    var evaluatedMovies = this.evaluator.updateMatchingScore(query, movies);
 
     // Order by matching score or alphabetically
-    matchedMovies = matchedMovies.sort(function(a, b) {
+    return evaluatedMovies.sort(function(a, b) {
         if (a.matchingScore === b.matchingScore) {
             if (a.name < b.name) {
                 return -1;
@@ -42,6 +42,4 @@ var processMovies = function(query, movies) {
 
         return b.matchingScore - a.matchingScore;
     });
-
-    return matchedMovies;
 };

@@ -1,11 +1,6 @@
-function SpeechListener(movieScoreFetcher) {
-    if (typeof movieScoreFetcher.getMovieScore !== 'function') {
-        throw 'movieMatcher must implement the getMovieScore method';
-    }
-
+function SpeechListener() {
     this.isListening = false;
     this.isSupported = true;
-    this.movieScoreFetcher = movieScoreFetcher;
 
     var SpeechRecognition = window.SpeechRecognition ||
                       window.webkitSpeechRecognition ||
@@ -28,7 +23,9 @@ function SpeechListener(movieScoreFetcher) {
 
 SpeechListener.prototype.listen = function(successCallback, errorCallback, doneCallback) {
     if (!this.isSupported || this.isListening) {
-        return;
+        return new Promise(function(resolve, reject) {
+            reject('SpeechRecognition is already listening');
+        });
     }
 
     var self = this;
