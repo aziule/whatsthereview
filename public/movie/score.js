@@ -12,15 +12,18 @@ function MovieScoreFetcher(apiClient, movieMatcher) {
 };
 
 MovieScoreFetcher.prototype.getMovieScore = function(name) {
+    var self = this;
+
     this.apiClient.queryApi(name)
         .then(function(movies) {
-            this.processMovies(name, movies);
-        }.bind(this)).catch(function(errData) {
+            processMovies(name, movies);
+        })
+        .catch(function(errData) {
             console.error(errData);
         });
 }
 
-MovieScoreFetcher.prototype.processMovies = function(query, movies) {
+var processMovies = function(query, movies) {
     var matchedMovies = this.movieMatcher.updateMatchingScore(query, movies);
 
     // Order by matching score or alphabetically
@@ -40,5 +43,5 @@ MovieScoreFetcher.prototype.processMovies = function(query, movies) {
         return b.matchingScore - a.matchingScore;
     });
 
-    console.log(matchedMovies);
+    return matchedMovies;
 };
