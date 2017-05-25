@@ -5,11 +5,19 @@ var doubleMetaphone = new DoubleMetaphone();
 var evaluator = new Evaluator(doubleMetaphone);
 var fetcher = new ScoreFetcher(apiClient, evaluator);
 var speechListener = new SpeechListener();
+var errorRenderer = new ErrorRenderer();
+var moviesRenderer = new MoviesRenderer();
+var recorderRenderer = new RecorderRenderer();
+var renderer = new AppRenderer(
+    errorRenderer,
+    moviesRenderer,
+    recorderRenderer
+);
 
 // Listen events
-var btnListen = document.getElementById('listen');
+var recordBtn = document.getElementsByClassName('recorder__record-btn')[0];
 
-btnListen.onclick = function() {
+recordBtn.onclick = function() {
     speechListener
         .listen()
         .then(function(transcript) {
