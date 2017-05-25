@@ -37,6 +37,7 @@ SpeechListener.prototype.listen = function(successCallback, errorCallback, doneC
 
         self.recognition.onend = function() {
             self.isListening = false;
+            reject('No voice detected, please try again.');
         };
 
         self.recognition.onresult = function() {

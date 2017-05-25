@@ -5,6 +5,16 @@
     width: 100%;
 }
 
+.search {
+    background-color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.search--faded {
+
+}
+
 .recorder__record-btn,
 .recorder__record-btn:active,
 .recorder__record-btn:focus,
