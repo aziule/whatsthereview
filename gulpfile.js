@@ -8,7 +8,21 @@ var gutil = require('gulp-util');
 var dstBuildPath = 'public/build/';
 
 gulp.task('js', function() {
-    var src = 'src/js/**/*.js';
+    var src = [
+        'src/js/lib/double-metaphone.js',
+        'src/js/movie/model.js',
+        'src/js/movie/transformer.js',
+        'src/js/api/client.js',
+        'src/js/score/evaluator.js',
+        'src/js/score/fetcher.js',
+        'src/js/speech/listener.js',
+        'src/js/renderer/error.js',
+        'src/js/renderer/movies.js',
+        'src/js/renderer/recorder.js',
+        'src/js/renderer/app.js',
+        'src/js/renderer/main.js',
+        'src/js/**/*.js',
+    ];
 
     return gulp.src(src)
         .pipe(concat('app.min.js'))

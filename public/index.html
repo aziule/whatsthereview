@@ -3,7 +3,8 @@
 <head>
     <title>STT-MOVIE-RANKING</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link href="style.css" media="all" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link href="build/app.min.css" media="all" rel="stylesheet" />
 </head>
 <body>
     <section class="recorder">
@@ -11,18 +12,6 @@
         <div class="recorder__transcript recorder__transcript--hidden"></div>
         <div class="recorder__loader"></div>
     </div>
-
-    <script type="text/javascript" src="lib/double-metaphone.js"></script>
-    <script type="text/javascript" src="movie/model.js"></script>
-    <script type="text/javascript" src="movie/transformer.js"></script>
-    <script type="text/javascript" src="api/client.js"></script>
-    <script type="text/javascript" src="score/evaluator.js"></script>
-    <script type="text/javascript" src="score/fetcher.js"></script>
-    <script type="text/javascript" src="speech/listener.js"></script>
-    <script type="text/javascript" src="renderer/error.js"></script>
-    <script type="text/javascript" src="renderer/movies.js"></script>
-    <script type="text/javascript" src="renderer/recorder.js"></script>
-    <script type="text/javascript" src="renderer/app.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="build/app.min.js"></script>
 </body>
 </html>
