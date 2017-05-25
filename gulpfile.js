@@ -26,7 +26,7 @@ gulp.task('js', function() {
 
     return gulp.src(src)
         .pipe(concat('app.min.js'))
-        .pipe(striplog())
+        // .pipe(striplog())
         .pipe(gulp.dest(dstBuildPath))
         .on('error', gutil.log);
 });

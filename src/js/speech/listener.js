@@ -11,7 +11,7 @@ function SpeechListener() {
     // Check browser support
     if (!SpeechRecognition) {
         this.isSupported = false;
-        console.error('Speech recognition is not supported by your browser');
+        // console.error('Speech recognition is not supported by your browser');
         return;
     }
 

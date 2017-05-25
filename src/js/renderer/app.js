@@ -5,12 +5,13 @@ function AppRenderer(errorRenderer, moviesRenderer, recorderRenderer) {
 }
 
 AppRenderer.prototype.startRecording = function() {
-    this.recorderRenderer.record();
+    this.recorderRenderer.startRecording();
     // this.moviesRenderer.fadeOut();
     // this.errorRenderer.hide();
 };
 
 AppRenderer.prototype.stopRecording = function() {
+    this.recorderRenderer.stopRecording();
     // this.moviesRenderer.fadeIn();
 };
 

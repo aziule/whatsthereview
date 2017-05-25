@@ -19,7 +19,7 @@ ScoreFetcher.prototype.getMovieScore = function(name) {
             processMovies(name, movies);
         })
         .catch(function(errData) {
-            console.error(errData);
+            // render error
         });
 }
 

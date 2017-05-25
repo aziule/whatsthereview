@@ -8,7 +8,7 @@ var speechListener = new SpeechListener();
 var errorRenderer = new ErrorRenderer();
 var moviesRenderer = new MoviesRenderer();
 var recorderRenderer = new RecorderRenderer();
-var renderer = new AppRenderer(
+var appRenderer = new AppRenderer(
     errorRenderer,
     moviesRenderer,
     recorderRenderer
@@ -18,14 +18,16 @@ var renderer = new AppRenderer(
 var recordBtn = document.getElementsByClassName('recorder__record-btn')[0];
 
 recordBtn.onclick = function() {
+    appRenderer.startRecording();
+
     speechListener
         .listen()
         .then(function(transcript) {
-            console.log(transcript);
+            appRenderer.stopRecording();
             // fetch the movies and render them here
         })
         .catch(function(error) {
-            console.error(error); // render error here
+             // render error here
         })
         .then(function() {
             // change app state here

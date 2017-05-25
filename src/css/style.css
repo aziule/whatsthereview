@@ -3,11 +3,25 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 10vh;
 }
 
-.recorder__record-btn {
+.recorder__record-btn,
+.recorder__record-btn:active,
+.recorder__record-btn:focus,
+.recorder__record-btn:hover {
     height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(0, 128, 0, .8);
+    border-color: rgba(0, 200, 0, 1);
+}
+
+.recorder__record-btn--recording,
+.recorder__record-btn--recording:active,
+.recorder__record-btn--recording:focus,
+.recorder__record-btn--recording:hover {
+    background-color: rgba(255, 0, 0, .8)!important;
+    border-color: red!important;
 }
 
 .recorder__transcript {
