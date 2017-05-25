@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STT-MOVIE-RANKING</title>
+    <script type="text/javascript" src="lib/double-metaphone.js"></script>
+    <script type="text/javascript" src="movie/model.js"></script>
+    <script type="text/javascript" src="movie/transformer.js"></script>
+    <script type="text/javascript" src="api.js"></script>
+    <script type="text/javascript" src="movie/matcher.js"></script>
+    <script type="text/javascript" src="movie/score.js"></script>
+</head>
+<body>
+    <button type="button" id="get-ranking">Get ranking</button>
+    <script>
+        var btn = document.getElementById('get-ranking');
+
+        var apiDataTransformer = new ApiDataTransformer();
+        var apiClient = new ApiClient(apiDataTransformer);
+        var doubleMetaphone = new DoubleMetaphone();
+        var movieMatcher = new MovieMatcher(doubleMetaphone);
+        var movieScoreFetcher = new MovieScoreFetcher(apiClient, movieMatcher);
+
+        btn.onclick = function() {
+            movieScoreFetcher.getMovieScore('snatch');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "stt-movie-ranking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Aziule (William Claude)",
+  "license": "ISC"
+}
