@@ -1,18 +1,18 @@
+.search {
+    background-color: #ccc;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.search--faded {
+
+}
+
 .recorder {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-}
-
-.search {
-    background-color: #ccc;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.search--faded {
-
 }
 
 .recorder__record-btn,
@@ -24,6 +24,7 @@
     margin: 0;
     background-color: rgba(0, 128, 0, .8);
     border-color: rgba(0, 200, 0, 1);
+    padding: 20px 0;
 }
 
 .recorder__record-btn--recording,

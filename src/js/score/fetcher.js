@@ -16,7 +16,8 @@ ScoreFetcher.prototype.getMovieScore = function(name) {
 
     this.apiClient.queryApi(name)
         .then(function(movies) {
-            processMovies(name, movies);
+            console.log(processMovies(name, movies).bind(self));
+            return processMovies(name, movies).bind(self);
         })
         .catch(function(errData) {
             // render error
@@ -27,7 +28,7 @@ var processMovies = function(query, movies) {
     var evaluatedMovies = this.evaluator.updateMatchingScore(query, movies);
 
     // Order by matching score or alphabetically
-    return evaluatedMovies.sort(function(a, b) {
+    evaluatedMovies = evaluatedMovies.sort(function(a, b) {
         if (a.matchingScore === b.matchingScore) {
             if (a.name < b.name) {
                 return -1;
@@ -42,4 +43,6 @@ var processMovies = function(query, movies) {
 
         return b.matchingScore - a.matchingScore;
     });
+
+    return evaluatedMovies;
 };

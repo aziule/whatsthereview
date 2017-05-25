@@ -16,6 +16,7 @@ var appRenderer = new AppRenderer(
 var recordBtn = document.getElementsByClassName('recorder__record-btn')[0];
 
 recordBtn.onclick = function() {
+    // Rename recorde to state bar
     appRenderer.startRecording();
 
     speechListener
@@ -23,12 +24,13 @@ recordBtn.onclick = function() {
         .then(function(transcript) {
             appRenderer.stopRecording(transcript);
             // fetch the movies and render them here
+
+            var movies = fetcher.getMovieScore(transcript);
+            console.log(movies);
         })
         .catch(function(error) {
              // render error here
-            appRenderer.stopRecording();
+             console.error(error);
         });
 };
 
-
-// movieScoreFetcher.getMovieScore('snatch');    
