@@ -1,9 +1,7 @@
 import * as actionsList from '../actions-list'
 import * as mutationsList from '../mutations-list'
 import ApiClient from '../../service/api/client'
-
-const TYPE_TV_SHOW = 'TV_SHOW';
-const TYPE_MOVIE = 'MOVIE';
+import Movie from '../../service/movie/model'
 
 const getters = {
     allMovies: state => state.movies,
@@ -45,25 +43,23 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
             var movies = [];
 
             for (var i = 0; i < apiData.movies.length; i++) {
-                movies.push({
-                    // @todo: use a class objet here rather than a pure js object
-                    type: TYPE_MOVIE,
-                    name: apiData.movies[i].name,
-                    year: apiData.movies[i].year,
-                    image: apiData.movies[i].image,
-                    score: apiData.movies[i].meterScore
-                });
+                movies.push(new Movie(
+                    Movie.TYPE_MOVIE,
+                    apiData.movies[i].name,
+                    apiData.movies[i].year,
+                    apiData.movies[i].image,
+                    apiData.movies[i].meterScore
+                ));
             }
 
             for (var i = 0; i < apiData.tvSeries.length; i++) {
-                movies.push({
-                    // @todo: same here
-                    type: TYPE_TV_SHOW,
-                    name: apiData.movies[i].title,
-                    year: apiData.movies[i].year,
-                    image: apiData.movies[i].image,
-                    score: apiData.movies[i].meterScore
-                });
+                movies.push(new Movie(
+                    Movie.TYPE_TV_SHOW,
+                    apiData.movies[i].title,
+                    apiData.movies[i].year,
+                    apiData.movies[i].image,
+                    apiData.movies[i].meterScore
+                ));
             }
 
             commit(mutationsList.SET_MOVIES_LIST, { movies });

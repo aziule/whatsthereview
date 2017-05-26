@@ -21,7 +21,8 @@
     export default {
         computed: mapGetters({
             movies: 'allMovies',
-            isRecording: 'isRecording'
+            isRecording: 'isRecording',
+            isLoading: 'isLoading'
         }),
         components: {
             MovieItem

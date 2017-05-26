@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    import * as actions from '../store/actions-list'
     import { mapGetters } from 'vuex'
+    import * as actions from '../store/actions-list'
 
     export default {
         methods: {
