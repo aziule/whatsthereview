@@ -1,0 +1,1 @@
+export const START_RECORDING = 'START_RECORDING';

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="message">Value is: {{ count }}</div>
+        <div>Value is: {{ count }}</div>
         <a href="#" @click.prevent="increment">Increment</a>
     </div>
 </template>
