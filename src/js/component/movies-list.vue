@@ -1,5 +1,11 @@
 <template>
-    <div class="movies-list">
+    <div
+        class="movies-list"
+        v-bind:class="{
+            'movies-list--faded': isRecording,
+            'movies-list--loading': isLoading
+        }">
+        <div class="movies-list__loader">Loader</div>
         <movie-item
             v-for="movie in movies"
             v-bind:movie="movie"
@@ -14,7 +20,8 @@
 
     export default {
         computed: mapGetters({
-            movies: 'allMovies'
+            movies: 'allMovies',
+            isRecording: 'isRecording'
         }),
         components: {
             MovieItem

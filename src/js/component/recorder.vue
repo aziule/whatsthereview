@@ -4,7 +4,7 @@
         <button
             class="recorder__record-btn"
             @click="startRecording">
-            {{isRecording ? 'Please wait...' : 'Start recording'}}
+            {{ isRecording ? 'Please wait...' : 'Start recording' }}
         </button>
     </div>
 </template>

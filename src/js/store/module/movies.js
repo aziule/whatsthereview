@@ -6,7 +6,8 @@ const TYPE_TV_SHOW = 'TV_SHOW';
 const TYPE_MOVIE = 'MOVIE';
 
 const getters = {
-    allMovies: state => state.movies
+    allMovies: state => state.movies,
+    isLoading: state => state.isLoading
 }
 
 const state = {
