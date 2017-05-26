@@ -16,6 +16,10 @@ if (SpeechRecognition) {
     recognition.maxAlternatives = 1;
 }
 
+const getters = {
+    isRecording: state => state.isRecording
+}
+
 const state = {
     isSupported: !!recognition,
     isRecording: false
@@ -56,7 +60,8 @@ const actions = {
 
 const module = {
     state,
-    actions
+    actions,
+    getters
 };
 
 export default module;

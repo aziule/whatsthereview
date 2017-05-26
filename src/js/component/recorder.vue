@@ -1,19 +1,27 @@
 <template>
     <div class="recorder">
         <div class="recorder__loader"></div>
-        <button class="recorder__record-btn" @click="startRecording">Start recording</button>
+        <button
+            class="recorder__record-btn"
+            @click="startRecording">
+            {{isRecording ? 'Please wait...' : 'Start recording'}}
+        </button>
     </div>
 </template>
 
 <script>
     import * as actions from '../store/actions-list'
+    import { mapGetters } from 'vuex'
 
     export default {
         methods: {
             startRecording() {
                 this.$store.dispatch(actions.START_RECORDING);
             }
-        }
+        },
+        computed: mapGetters({
+            isRecording: 'isRecording'
+        })
     }
 </script>
 
