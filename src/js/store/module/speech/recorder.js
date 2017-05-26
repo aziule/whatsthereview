@@ -39,9 +39,6 @@ const actions = {
 
         recognition.start();
 
-        // @todo: remove, dev purpose only
-        store.dispatch(actionsList.ON_VOICE_RECORDED, 'snatch');
-
         recognition.onend = function() {
             state.isRecording = false;
         };
