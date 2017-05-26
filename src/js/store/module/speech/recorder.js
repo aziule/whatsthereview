@@ -22,6 +22,7 @@ const getters = {
 
 const state = {
     isSupported: !!recognition,
+    isAuthorised: false,
     isRecording: false
 };
 

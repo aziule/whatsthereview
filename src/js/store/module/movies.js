@@ -1,7 +1,6 @@
 import * as actionsList from '../actions-list'
 import * as mutationsList from '../mutations-list'
-import ApiClient from '../../service/api/client'
-import Movie from '../../service/movie/model'
+import MovieFetcher from '../../service/movie/fetcher'
 import Evaluator from '../../service/movie/evaluator'
 import Sorter from '../../service/movie/sorter'
 
@@ -38,30 +37,8 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
 
     commit('setIsFetchingMovies');
 
-    ApiClient.queryApi(transcript)
-        .then((apiData) => {
-            var movies = [];
-
-            for (var i = 0; i < apiData.movies.length; i++) {
-                movies.push(new Movie(
-                    Movie.TYPE_MOVIE,
-                    apiData.movies[i].name,
-                    apiData.movies[i].year,
-                    apiData.movies[i].image,
-                    apiData.movies[i].meterScore
-                ));
-            }
-
-            for (var i = 0; i < apiData.tvSeries.length; i++) {
-                movies.push(new Movie(
-                    Movie.TYPE_TV_SHOW,
-                    apiData.tvSeries[i].title,
-                    apiData.tvSeries[i].year,
-                    apiData.tvSeries[i].image,
-                    apiData.tvSeries[i].meterScore
-                ));
-            }
-
+    MovieFetcher.fetchMovies(transcript)
+        .then((movies) => {
             movies = Evaluator.evaluateMatchingScore(transcript, movies);
 
             commit(mutationsList.SET_MOVIES_LIST, { movies });

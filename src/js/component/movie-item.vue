@@ -1,6 +1,9 @@
 <template>
     <div class="movie">
-        <h1>{{ movie.name }}</h1>
+        <div class="movie__name">{{ movie.name }}</div>
+        <div class="movie__year">{{ movie.year }}</div>
+        <div class="movie__score">{{ movie.score }}</div>
+        <img class="movie__picture" :src="movie.pictureUrl" />
     </div>
 </template>
 
