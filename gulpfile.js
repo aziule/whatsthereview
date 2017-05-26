@@ -10,6 +10,8 @@ var dstBuildPath = 'public/build/';
 
 gulp.task('js', function(cb) {
     var src = [
+        'node_modules/vue/dist/vue.min.js',
+        'node_modules/vuex/dist/vuex.min.js',
         'src/js/lib/double-metaphone.js',
         'src/js/movie/model.js',
         'src/js/movie/transformer.js',
@@ -20,9 +22,10 @@ gulp.task('js', function(cb) {
         'src/js/renderer/error.js',
         'src/js/renderer/movies.js',
         'src/js/renderer/recorder.js',
+        'src/js/renderer/search.js',
         'src/js/renderer/app.js',
-        'src/js/renderer/main.js',
-        'src/js/**/*.js',
+        'src/js/store.js',
+        'src/js/main.js',
     ];
 
     pump([

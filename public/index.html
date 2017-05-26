@@ -4,21 +4,10 @@
     <title>STT-MOVIE-RANKING</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-    <link rel="stylesheet" href="build/app.min.css" media="all">
+    <!--<link rel="stylesheet" href="build/app.min.css" media="all">-->
 </head>
 <body>
-    <section class="container-fluid search">
-        <div class="container">
-            <span class="search__query">Press "Start recording"</span>
-        </div>
-    </section>
-    <section class="recorder container-fluid">
-        <button type="button" class="recorder__record-btn">
-            Start recording
-        </button>
-        <div class="recorder__transcript recorder__transcript--hidden"></div>
-        <div class="recorder__loader"></div>
-    </div>
-    <script type="text/javascript" src="build/app.min.js"></script>
+    <app></app>
+    <script type="text/javascript" src="dist/app.min.js"></script>
 </body>
 </html>

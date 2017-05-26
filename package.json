@@ -7,9 +7,18 @@
     "app-module-path": "^2.2.0",
     "express": "^4.15.3",
     "gulp-cli": "^1.3.0",
-    "milligram": "^1.3.0"
+    "milligram": "^1.3.0",
+    "vue": "^2.3.3",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "css-loader": "^0.28.3",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
@@ -17,7 +26,14 @@
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "pump": "^1.0.2"
+    "pump": "^1.0.2",
+    "style-loader": "^0.18.1",
+    "vue-hot-reload-api": "^2.1.0",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^12.1.1",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
