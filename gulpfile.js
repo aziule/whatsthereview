@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var striplog = require('gulp-strip-debug');
 var minfycss = require('gulp-minify-css');
-var gutil = require('gulp-util');
+var pump = require('pump');
 
 var dstBuildPath = 'public/build/';
 
-gulp.task('js', function() {
+gulp.task('js', function(cb) {
     var src = [
         'src/js/lib/double-metaphone.js',
         'src/js/movie/model.js',
@@ -24,33 +25,43 @@ gulp.task('js', function() {
         'src/js/**/*.js',
     ];
 
-    return gulp.src(src)
-        .pipe(concat('app.min.js'))
-        // .pipe(striplog())
-        .pipe(gulp.dest(dstBuildPath))
-        .on('error', gutil.log);
+    pump([
+        gulp.src(src),
+        concat('app.min.js'),
+        // striplog(),
+        // uglify(),
+        gulp.dest(dstBuildPath),
+    ], cb);
 });
 
-gulp.task('css', function() {
+gulp.task('css', function(cb) {
     var src = [
         'node_modules/milligram/dist/milligram.min.css',
         'src/css/**/*.css',
     ];
 
-    return gulp.src(src)
-        .pipe(concat('app.min.css'))
-        .pipe(minfycss())
-        .pipe(gulp.dest(dstBuildPath))
-        .on('error', gutil.log);
+    pump([
+        gulp.src(src),
+        concat('app.min.css'),
+        minfycss(),
+        gulp.dest(dstBuildPath),
+    ], cb);
 });
 
 gulp.task('clean', function() {
-    return gulp
-    .src(
-        dstBuildPath, {
-        read: false
-    })
-    .pipe(clean());
+    pump([
+        gulp.src(
+            dstBuildPath, {
+                read: false
+            }
+        ),
+        clean(),
+    ]);
+});
+
+gulp.task('watch', function() {
+    gulp.watch('src/js/**/*.js', ['js']);
+    gulp.watch('src/css/**/*.css', ['css']);
 });
 
 gulp.task('default', ['clean'], function() {

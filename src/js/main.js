@@ -12,7 +12,7 @@ var appRenderer = new AppRenderer(
     new SearchRenderer()
 );
 
-// Listen events
+// Listen to events
 var recordBtn = document.getElementsByClassName('recorder__record-btn')[0];
 
 recordBtn.onclick = function() {
@@ -23,6 +23,7 @@ recordBtn.onclick = function() {
         .listen()
         .then(function(transcript) {
             appRenderer.stopRecording(transcript);
+            console.log(transcript);
             // fetch the movies and render them here
 
             var movies = fetcher.getMovieScore(transcript);
