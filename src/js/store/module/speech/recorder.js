@@ -48,7 +48,8 @@ const actions = {
         };
 
         recognition.onerror = function(e) {
-            throw new Error('An error occured', e.error);
+            console.error(e);
+            throw new Error('An error occured');
         };
     }
 };
