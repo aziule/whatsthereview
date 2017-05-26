@@ -12,7 +12,6 @@ MovieFetcher.prototype.fetchMovies = function(query) {
     // @todo: add caching using local storage
 
     return new Promise(function(resolve, reject) {
-        // @todo: replace with a proper node module
         var xhr = new XMLHttpRequest();
         var url = self.url + '?limit=10&q=' + query;
 
