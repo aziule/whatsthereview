@@ -2,6 +2,7 @@ import * as actionsList from '../actions-list'
 import * as mutationsList from '../mutations-list'
 import MovieFetcher from '../../service/movie/fetcher'
 import Evaluator from '../../service/movie/evaluator'
+import Filter from '../../service/movie/filter'
 import Sorter from '../../service/movie/sorter'
 
 const getters = {
@@ -19,11 +20,9 @@ const mutations = {
         state.movies = movies;
     },
     setIsFetchingMovies(state) {
-        console.log('fetching movies');
         state.isLoading = true;
     },
     setIsNotFetchingMovies(state) {
-        console.log('finished fetching movies');
         state.isLoading = false;
     }
 };
@@ -40,7 +39,8 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
     MovieFetcher.fetchMovies(transcript)
         .then((movies) => {
             movies = Evaluator.evaluateMatchingScore(transcript, movies);
-
+            movies = Filter.removeIrrelevantMovies(movies);
+            console.log(movies)
             commit(mutationsList.SET_MOVIES_LIST, { movies });
         })
         .catch((error) => {
