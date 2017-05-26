@@ -1,3 +1,4 @@
+import store from '../../'
 import * as actionsList from '../../actions-list';
 
 const SpeechRecognition = window.SpeechRecognition ||
@@ -35,16 +36,20 @@ actions[actionsList.START_RECORDING] = () => {
 
     recognition.start();
 
+    // @todo: remove, dev purpose only
+    store.dispatch(actionsList.ON_VOICE_RECORDED, 'snatch');
+
     recognition.onend = function() {
         state.isRecording = false;
     };
 
     recognition.onresult = function() {
         var transcript = event.results[0][0].transcript;
+        store.dispatch(actionsList.ON_VOICE_RECORDED, transcript);
     };
 
-    recognition.onerror = function(e) {
-        throw new Error('An error occured');
+    recognition.onerror = function() {
+        throw new Error('An error occured', e.error);
     };
 };
 
