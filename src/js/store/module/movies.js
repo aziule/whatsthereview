@@ -7,6 +7,7 @@ import Evaluator from '../../service/movie/evaluator'
 const getters = {
     allMovies: (state) =>
     {
+        // Sort movies by matching score or alphabetically
         return state.movies.sort(function(a, b) {
             if (a.matchingScore === b.matchingScore) {
                 if (a.name < b.name) {

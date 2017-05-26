@@ -17,9 +17,7 @@ ApiClient.prototype.queryApi = function(q) {
         xhr.onload = function() {
             if (this.status === 200) {
                 var apiData = JSON.parse(this.responseText);
-
                 resolve(apiData);
-
                 return;
             }
 
