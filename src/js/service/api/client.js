@@ -40,4 +40,4 @@ ApiClient.prototype.queryApi = function(q) {
     });
 };
 
-export default ApiClient;
+export default new ApiClient();

@@ -1,3 +1,5 @@
+"use strict"
+
 class Movie {
     constructor(type, name, year, pictureUrl, score) {
         this.type = type;

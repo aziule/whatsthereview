@@ -2,9 +2,27 @@ import * as actionsList from '../actions-list'
 import * as mutationsList from '../mutations-list'
 import ApiClient from '../../service/api/client'
 import Movie from '../../service/movie/model'
+import Evaluator from '../../service/movie/evaluator'
 
 const getters = {
-    allMovies: state => state.movies,
+    allMovies: (state) =>
+    {
+        return state.movies.sort(function(a, b) {
+            if (a.matchingScore === b.matchingScore) {
+                if (a.name < b.name) {
+                    return -1;
+                }
+
+                if (a.name > b.name) {
+                    return 1;
+                }
+
+                return 0;
+            }
+
+            return b.matchingScore - a.matchingScore;
+        });
+    },
     isLoading: state => state.isLoading
 }
 
@@ -36,9 +54,7 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
 
     commit('setIsFetchingMovies');
 
-    var apiClient = new ApiClient();
-
-    apiClient.queryApi(transcript)
+    ApiClient.queryApi(transcript)
         .then((apiData) => {
             var movies = [];
 
@@ -55,12 +71,14 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
             for (var i = 0; i < apiData.tvSeries.length; i++) {
                 movies.push(new Movie(
                     Movie.TYPE_TV_SHOW,
-                    apiData.movies[i].title,
-                    apiData.movies[i].year,
-                    apiData.movies[i].image,
-                    apiData.movies[i].meterScore
+                    apiData.tvSeries[i].title,
+                    apiData.tvSeries[i].year,
+                    apiData.tvSeries[i].image,
+                    apiData.tvSeries[i].meterScore
                 ));
             }
+
+            movies = Evaluator.evaluateMatchingScore(transcript, movies);
 
             commit(mutationsList.SET_MOVIES_LIST, { movies });
         })
