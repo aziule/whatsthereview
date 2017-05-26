@@ -1,10 +1,5 @@
-function ApiClient(apiDataTransformer) {
-    if (typeof apiDataTransformer.apiDataToMoviesList !== 'function') {
-        throw 'apiDataTransformer must implement the apiDataToMoviesList method';
-    }
-
+function ApiClient() {
     this.url = 'https://www.rottentomatoes.com/api/private/v2.0/search';
-    this.apiDataTransformer = apiDataTransformer;
 }
 
 ApiClient.prototype.queryApi = function(q) {
@@ -22,7 +17,7 @@ ApiClient.prototype.queryApi = function(q) {
             if (this.status === 200) {
                 var apiData = JSON.parse(this.responseText);
 
-                resolve(self.apiDataTransformer.apiDataToMoviesList(apiData));
+                resolve(apiData);
 
                 return;
             }
@@ -43,3 +38,5 @@ ApiClient.prototype.queryApi = function(q) {
         xhr.send();
     });
 };
+
+export default ApiClient;

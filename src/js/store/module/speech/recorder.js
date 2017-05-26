@@ -21,36 +21,36 @@ const state = {
     isRecording: false
 };
 
-const actions = {};
+const actions = {
+    [actionsList.START_RECORDING] ({ state }) {
+        if (!state.isSupported) {
+            throw new Error('The audio API is not active on your browser');
+        }
 
-actions[actionsList.START_RECORDING] = () => {
-    if (!state.isSupported) {
-        throw new Error('The audio API is not active on your browser');
+        if (state.isRecording) {
+            return;
+        }
+
+        state.isRecording = true;
+
+        recognition.start();
+
+        // @todo: remove, dev purpose only
+        store.dispatch(actionsList.ON_VOICE_RECORDED, 'snatch');
+
+        recognition.onend = function() {
+            state.isRecording = false;
+        };
+
+        recognition.onresult = function() {
+            var transcript = event.results[0][0].transcript;
+            store.dispatch(actionsList.ON_VOICE_RECORDED, transcript);
+        };
+
+        recognition.onerror = function(e) {
+            throw new Error('An error occured', e.error);
+        };
     }
-
-    if (state.isRecording) {
-        return;
-    }
-
-    state.isRecording = true;
-
-    recognition.start();
-
-    // @todo: remove, dev purpose only
-    store.dispatch(actionsList.ON_VOICE_RECORDED, 'snatch');
-
-    recognition.onend = function() {
-        state.isRecording = false;
-    };
-
-    recognition.onresult = function() {
-        var transcript = event.results[0][0].transcript;
-        store.dispatch(actionsList.ON_VOICE_RECORDED, transcript);
-    };
-
-    recognition.onerror = function() {
-        throw new Error('An error occured', e.error);
-    };
 };
 
 const module = {
