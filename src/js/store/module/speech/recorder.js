@@ -1,4 +1,4 @@
-import * as actionsList from '../../store/actions-list';
+import * as actionsList from '../../actions-list';
 
 const state = {
     isSupported: true,

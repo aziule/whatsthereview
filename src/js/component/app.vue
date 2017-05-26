@@ -1,21 +1,15 @@
 <template>
-    <div>
-        <div>Value is: {{ count }}</div>
-        <a href="#" @click.prevent="increment">Increment</a>
+    <div id="app">
+        <recorder></recorder>
     </div>
 </template>
 
 <script>
+    import Recorder from './recorder.vue'
+
     export default {
-        data () {
-            return {
-                count: 5
-            }
-        },
-        methods: {
-            increment () {
-                this.count ++;
-            }
+        components: {
+            Recorder
         }
     }
 </script>
