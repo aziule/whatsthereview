@@ -45,6 +45,7 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
 
             for (var i = 0; i < apiData.movies.length; i++) {
                 movies.push({
+                    // @todo: use a class objet here rather than a pure js object
                     type: TYPE_MOVIE,
                     name: apiData.movies[i].name,
                     year: apiData.movies[i].year,
@@ -55,6 +56,7 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
 
             for (var i = 0; i < apiData.tvSeries.length; i++) {
                 movies.push({
+                    // @todo: same here
                     type: TYPE_TV_SHOW,
                     name: apiData.movies[i].title,
                     year: apiData.movies[i].year,

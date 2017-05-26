@@ -1,12 +1,12 @@
 <template>
     <div class="movie">
+        <h1>{{ movie.name }}</h1>
     </div>
 </template>
 
 <script>
-    import * as actions from '../store/actions-list'
-
     export default {
+        props: ['movie']
     }
 </script>
 
