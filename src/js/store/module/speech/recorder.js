@@ -1,14 +1,51 @@
 import * as actionsList from '../../actions-list';
 
+const SpeechRecognition = window.SpeechRecognition ||
+    window.webkitSpeechRecognition ||
+    window.mozSpeechRecognition ||
+    window.msSpeechRecognition ||
+    window.oSpeechRecognition;
+
+var recognition = null;
+
+if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.lang = 'en-GB';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+}
+
 const state = {
-    isSupported: true,
-    isListening: false
+    isSupported: !!recognition,
+    isRecording: false
 };
 
-const actions = {}
+const actions = {};
 
 actions[actionsList.START_RECORDING] = () => {
-    console.log('record from module');
+    if (!state.isSupported) {
+        throw new Error('The audio API is not active on your browser');
+    }
+
+    if (state.isRecording) {
+        return;
+    }
+
+    state.isRecording = true;
+
+    recognition.start();
+
+    recognition.onend = function() {
+        state.isRecording = false;
+    };
+
+    recognition.onresult = function() {
+        var transcript = event.results[0][0].transcript;
+    };
+
+    recognition.onerror = function(e) {
+        throw new Error('An error occured');
+    };
 };
 
 const module = {
@@ -17,56 +54,3 @@ const module = {
 };
 
 export default module;
-
-// function SpeechListener() {
-//     this.isListening = false;
-//     this.isSupported = true;
-//
-//     var SpeechRecognition = window.SpeechRecognition ||
-//                       window.webkitSpeechRecognition ||
-//                       window.mozSpeechRecognition ||
-//                       window.msSpeechRecognition ||
-//                       window.oSpeechRecognition;
-//
-//     // Check browser support
-//     if (!SpeechRecognition) {
-//         this.isSupported = false;
-//         // console.error('Speech recognition is not supported by your browser');
-//         return;
-//     }
-//
-//     this.recognition = new SpeechRecognition();
-//     this.recognition.lang = 'en-GB';
-//     this.recognition.interimResults = false;
-//     this.recognition.maxAlternatives = 1;
-// };
-//
-// SpeechListener.prototype.listen = function(successCallback, errorCallback, doneCallback) {
-//     if (!this.isSupported || this.isListening) {
-//         return new Promise(function(resolve, reject) {
-//             reject('SpeechRecognition is already listening');
-//         });
-//     }
-//
-//     var self = this;
-//
-//     this.isListening = true;
-//
-//     return new Promise(function(resolve, reject) {
-//         self.recognition.start();
-//
-//         self.recognition.onend = function() {
-//             self.isListening = false;
-//         };
-//
-//         self.recognition.onresult = function() {
-//             var transcript = event.results[0][0].transcript;
-//             resolve(transcript);
-//         };
-//
-//
-//         self.recognition.onerror = function(e) {
-//             reject(e.error);
-//         };
-//     });
-// };
