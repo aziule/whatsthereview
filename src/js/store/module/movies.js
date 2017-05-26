@@ -3,27 +3,10 @@ import * as mutationsList from '../mutations-list'
 import ApiClient from '../../service/api/client'
 import Movie from '../../service/movie/model'
 import Evaluator from '../../service/movie/evaluator'
+import Sorter from '../../service/movie/sorter'
 
 const getters = {
-    allMovies: (state) =>
-    {
-        // Sort movies by matching score or alphabetically
-        return state.movies.sort(function(a, b) {
-            if (a.matchingScore === b.matchingScore) {
-                if (a.name < b.name) {
-                    return -1;
-                }
-
-                if (a.name > b.name) {
-                    return 1;
-                }
-
-                return 0;
-            }
-
-            return b.matchingScore - a.matchingScore;
-        });
-    },
+    allMovies: state => Sorter.sortMovies(state.movies),
     isLoading: state => state.isLoading
 }
 
