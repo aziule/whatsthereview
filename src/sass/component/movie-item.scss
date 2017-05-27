@@ -58,7 +58,7 @@
         }
     }
 
-    @media screen and (max-width: $break-1-col) {
+    @include for-phone-only {
         flex-basis: 100%;
         padding: 10px 0;
 

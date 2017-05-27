@@ -6,7 +6,7 @@ html {
     line-height: 1.5;
     font-size: 16px;
 
-    @media screen and (max-width: $break-1-col) {
+    @include for-phone-only {
         font-size: 15px;
     }
 }

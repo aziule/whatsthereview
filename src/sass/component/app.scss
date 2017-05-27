@@ -11,10 +11,17 @@
     &__content {
         display: flex;
         flex-direction: column;
-        padding: 10vh 20vw;
 
-        @media screen and (max-width: $break-1-col) {
+        @include for-phone-only {
             padding: 0;
+        }
+
+        @include for-tablet-portrait-up {
+            padding: 5vh 10vh;
+        }
+
+        @include for-tablet-landscape-up {
+            padding: 5vh 20vw;
         }
     }
 }
