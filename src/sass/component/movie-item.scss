@@ -41,6 +41,15 @@
         background-position: center center;
     }
 
+    &__matching {
+        color: $color-matching;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        font-size: .5em;
+        margin-right: 10px;
+    }
+
     @media screen and (max-width: $break-1-col) {
         flex-basis: 100%;
         min-height: 100px;

@@ -8,7 +8,12 @@
                 }">
             </div>
             <div class="movie__details">
-                <div class="movie__name">{{ movie.name }}</div>
+                <div class="movie__name">
+                    <div class="movie__matching" v-if="movie.matchingScore === 100">
+                        PERFECT MATCH
+                    </div>
+                    {{ movie.name }}
+                </div>
                 <div
                         class="movie__score"
                         v-if="movie.score !== undefined">
