@@ -3,7 +3,7 @@
         <div class="movies-list__loader" v-if="isLoading">
             <p>Loading movies list...</p>
         </div>
-        <div class="content" v-if="error !== null">
+        <div v-if="error !== null">
             <h1>Oh no :(</h1>
             <p>{{ error }}</p>
         </div>

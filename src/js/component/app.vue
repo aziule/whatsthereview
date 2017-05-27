@@ -1,8 +1,10 @@
 <template>
     <section id="app" class="app">
-        <splash></splash>
-        <search></search>
-        <movies-list></movies-list>
+        <div class="app__content">
+            <splash></splash>
+            <search></search>
+            <movies-list></movies-list>
+        </div>
         <recorder></recorder>
     </section>
 </template>

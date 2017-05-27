@@ -1,5 +1,5 @@
 <template>
-    <section class="splash content" v-if="!currentQuery">
+    <section class="splash" v-if="!currentQuery">
         <h1>Welcome!</h1>
         <p v-if="!isSupported">Text if speech recognition is not supported</p>
         <p>

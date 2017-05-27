@@ -4,8 +4,17 @@
     display: flex;
     -webkit-box-orient: vertical;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     color: $color-text-secondary;
-    text-align: justify;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 10vh 20vw;
+
+        @media screen and (max-width: $break-1-col) {
+            padding: 0;
+        }
+    }
 }
