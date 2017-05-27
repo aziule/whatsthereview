@@ -1,6 +1,13 @@
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     background-color: $color-background-primary;
     word-wrap: break-word;
+    margin: 0;
 }
 
 .flex {
@@ -9,4 +16,12 @@ body {
 
 h1 {
     color: $color-text;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
 }

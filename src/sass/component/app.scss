@@ -1,0 +1,11 @@
+.app {
+    margin-bottom: $footer-height;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    color: $color-text-secondary;
+    text-align: justify;
+}
