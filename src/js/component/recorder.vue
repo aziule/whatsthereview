@@ -7,12 +7,12 @@
             class="recorder__record-btn"
             @click="startRecording">
             <div class="recorder__record-btn__content" v-if="!isRecording">
-                <span class="material-icons recorder__record-btn__content__icon">mic</span>
-                Start recording
+                <span class="material-icons recorder__record-btn__content__icon">search</span>
+                Look for a movie
             </div>
             <div class="recorder__record-btn__content" v-if="isRecording">
-                <span class="material-icons recorder__record-btn__content__icon">fiber_manual_record</span>
-                Recording...
+                <span class="material-icons recorder__record-btn__content__icon">mic</span>
+                Listening to you
             </div>
         </button>
     </div>
