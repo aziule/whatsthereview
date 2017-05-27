@@ -1,5 +1,5 @@
-import store from '../../'
-import * as actionsList from '../../actions-list';
+import store from '../'
+import * as actionsList from '../actions-list';
 
 const SpeechRecognition = window.SpeechRecognition ||
     window.webkitSpeechRecognition ||
