@@ -1,6 +1,7 @@
 <template>
-    <section class="splash" v-if="isDisplayed">
+    <section class="splash content" v-if="isDisplayed">
         <h1>Welcome!</h1>
+        <p v-if="!isSupported">Text if speech recognition is not supported</p>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non lectus non metus malesuada facilisis.
             Nunc aliquam metus a erat lacinia, ut laoreet mauris lobortis. Suspendisse tristique ac nulla sit amet vestibulum.
@@ -19,7 +20,8 @@
 
     export default {
         computed: mapGetters({
-            isDisplayed: 'isSplashDisplayed'
+            isDisplayed: 'isSplashDisplayed',
+            isSupported: 'isRecorderSupported'
         })
     }
 </script>

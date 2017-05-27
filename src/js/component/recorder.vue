@@ -2,7 +2,8 @@
     <div class="recorder"
         v-bind:class="{
             'recorder--recording': isRecording
-        }">
+        }"
+        v-if="isSupported">
         <button
             class="recorder__record-btn"
             @click="startRecording">
@@ -29,7 +30,8 @@
             }
         },
         computed: mapGetters({
-            isRecording: 'isRecording'
+            isRecording: 'isRecording',
+            isSupported: 'isRecorderSupported'
         })
     }
 </script>

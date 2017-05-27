@@ -5,7 +5,7 @@
     flex-wrap: wrap;
 
     &__loader {
-        display: none;
+        display: flex;
         position: fixed;
         top: 0;
         left: 0;
@@ -16,12 +16,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-
-    &--loading {
-        .movies-list__loader {
-            display: flex;
-        }
     }
 
     @media screen and (max-width: $break-1-col) {

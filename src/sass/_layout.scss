@@ -52,3 +52,14 @@ button:focus {
 button:hover {
     cursor: pointer;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 10vh 20vw 0;
+    text-align: justify;
+
+    @media screen and (max-width: $break-1-col) {
+        padding: 5vh 10vw 0;
+    }
+}

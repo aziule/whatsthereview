@@ -17,7 +17,8 @@ if (SpeechRecognition) {
 }
 
 const getters = {
-    isRecording: state => state.isRecording
+    isRecording: state => state.isRecording,
+    isRecorderSupported: state => state.isSupported
 }
 
 const state = {

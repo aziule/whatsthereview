@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actionsList from './actions-list'
-import recorder from './module/recorder'
-import movies from './module/movies'
-import search from './module/search'
-import splash from './module/splash'
+import Movies from './module/movies'
+import Recorder from './module/recorder'
+import Search from './module/search'
+import Splash from './module/splash'
 
 Vue.use(Vuex)
 
 const modules = {
-    recorder,
-    movies,
-    search,
-    splash
+    Movies,
+    Recorder,
+    Search,
+    Splash
 };
 
 const store = new Vuex.Store({

@@ -1,11 +1,11 @@
 <template>
-    <section class="movies-list"
-         v-bind:class="{
-            'movies-list--faded': isRecording,
-            'movies-list--loading': isLoading
-        }">
-        <div class="movies-list__loader">
+    <section class="movies-list">
+        <div class="movies-list__loader" v-if="isLoading">
             <p>Loading movies list...</p>
+        </div>
+        <div class="content" v-if="error !== null">
+            <h1>Oh no :(</h1>
+            <p>{{ error }}</p>
         </div>
         <movie-item
             v-for="movie in movies"
@@ -23,7 +23,8 @@
         computed: mapGetters({
             movies: 'allMovies',
             isRecording: 'isRecording',
-            isLoading: 'isLoading'
+            isLoading: 'isLoading',
+            error: 'moviesListError'
         }),
         components: {
             MovieItem
