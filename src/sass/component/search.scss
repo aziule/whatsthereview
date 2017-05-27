@@ -2,10 +2,9 @@
     height: 5vh;
     display: flex;
     align-items: center;
-    margin: 0 10px;
 
     &__label {
-        color: #aaa;
+        color: $color-text-secondary;
         margin-right: 5px;
     }
 

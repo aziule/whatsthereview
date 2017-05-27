@@ -4,13 +4,15 @@ import * as actionsList from './actions-list'
 import recorder from './module/recorder'
 import movies from './module/movies'
 import search from './module/search'
+import splash from './module/splash'
 
 Vue.use(Vuex)
 
 const modules = {
     recorder,
     movies,
-    search
+    search,
+    splash
 };
 
 const store = new Vuex.Store({

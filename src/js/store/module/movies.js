@@ -4,6 +4,7 @@ import MovieFetcher from '../../service/movie/fetcher'
 import Evaluator from '../../service/movie/evaluator'
 import Filter from '../../service/movie/filter'
 import Sorter from '../../service/movie/sorter'
+import store from '../'
 
 const getters = {
     allMovies: state => Sorter.sortMovies(state.movies),
@@ -16,7 +17,7 @@ const state = {
 }
 
 const mutations = {
-    [mutationsList.SET_MOVIES_LIST] (state, { movies }) {
+    setMoviesList(state, { movies }) {
         state.movies = movies;
     },
     setIsFetchingMovies(state) {
@@ -27,27 +28,34 @@ const mutations = {
     }
 };
 
-const actions = {}
+const actions = {
+    [actionsList.SEARCH_IN_PROGRESS] ({ commit }) {
+        commit('setIsFetchingMovies');
+    },
+    [actionsList.SEARCH_DONE] ({ commit }) {
+        commit('setIsNotFetchingMovies');
+    }
+}
 
 actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
     if (state.isLoading) {
         return;
     }
 
-    commit('setIsFetchingMovies');
+    store.dispatch(actionsList.SEARCH_IN_PROGRESS);
 
     MovieFetcher.fetchMovies(transcript)
         .then((movies) => {
             movies = Evaluator.evaluateMatchingScore(transcript, movies);
             movies = Filter.removeIrrelevantMovies(movies);
-            commit(mutationsList.SET_MOVIES_LIST, { movies });
+            commit('setMoviesList', { movies });
         })
         .catch((error) => {
             // do something here with the error
             console.error(error);
         })
         .then(() => {
-            commit('setIsNotFetchingMovies');
+            store.dispatch(actionsList.SEARCH_DONE);
         });
 }
 

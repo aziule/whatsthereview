@@ -3,6 +3,7 @@
 @import 'component/movie-item';
 @import 'component/recorder';
 @import 'component/search';
+@import 'component/splash';
 @import 'layout';
 
 .app {
@@ -13,4 +14,6 @@
     flex-direction: column;
     padding: 10px;
     box-sizing: border-box;
+    color: $color-text-secondary;
+    text-align: justify;
 }
