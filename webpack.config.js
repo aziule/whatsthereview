@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
     entry: [
         './src/js/app.js',
-        // './node_modules/normalize.css/normalize.css',
+        './node_modules/normalize.css/normalize.css',
         './src/sass/base.scss',
     ],
     output: {
@@ -27,7 +27,7 @@ module.exports = {
                 test: /\.css/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader",
+                    use: "css-loader!sass-loader",
                 }),
             },
             {
