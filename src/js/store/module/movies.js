@@ -47,7 +47,7 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
             console.error(error);
         })
         .then(() => {
-            commit('setIsNotFetchingMovies'); // @todo fix
+            commit('setIsNotFetchingMovies');
         });
 }
 

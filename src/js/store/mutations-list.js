@@ -1,1 +1,2 @@
 export const SET_MOVIES_LIST = 'SET_MOVIES_LIST';
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
