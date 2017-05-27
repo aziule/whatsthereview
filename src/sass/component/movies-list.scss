@@ -1,0 +1,26 @@
+.movies-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    &__loader {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: $footer-height;
+        background-color: rgba(0, 0, 0, .8);
+        color: $color-text;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &--loading {
+        .movies-list__loader {
+            display: flex;
+        }
+    }
+}

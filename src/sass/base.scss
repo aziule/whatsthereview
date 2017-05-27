@@ -1,6 +1,8 @@
 @import 'variables';
+@import 'component/movies-list';
+@import 'component/movie-item';
 @import 'component/recorder';
-@import 'component/movie';
+@import 'component/search';
 @import 'layout';
 
 .app {
