@@ -3,22 +3,30 @@ import * as mutationsList from '../mutations-list'
 
 const getters = {
     currentQuery: state => state.query,
+    searchesHistory: state => state.searches
 }
 
 const state = {
-    query: null
+    query: null,
+    searches: []
 }
 
 const mutations = {
     [mutationsList.SET_SEARCH_QUERY] (state, query) {
         state.query = query;
     },
+    addSearch(state, query) {
+        state.searches.push(query);
+    }
 };
 
-const actions = {}
-
-actions[actionsList.ON_VOICE_RECORDED] = ({ commit }, transcript) => {
-    commit(mutationsList.SET_SEARCH_QUERY, transcript);
+const actions = {
+    [actionsList.ON_VOICE_RECORDED] ({ commit }, transcript) {
+        commit(mutationsList.SET_SEARCH_QUERY, transcript);
+    },
+    [actionsList.SEARCH_DONE]({ commit }, query) {
+        commit('addSearch', query);
+    }
 }
 
 export default {

@@ -46,7 +46,7 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
         return;
     }
 
-    store.dispatch(actionsList.SEARCH_IN_PROGRESS);
+    store.dispatch(actionsList.SEARCH_IN_PROGRESS, transcript);
 
     MovieFetcher.fetchMovies(transcript)
         .then((movies) => {

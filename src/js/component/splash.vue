@@ -1,5 +1,5 @@
 <template>
-    <section class="splash content" v-if="isDisplayed">
+    <section class="splash content" v-if="!currentQuery">
         <h1>Welcome!</h1>
         <p v-if="!isSupported">Text if speech recognition is not supported</p>
         <p>
@@ -20,8 +20,8 @@
 
     export default {
         computed: mapGetters({
-            isDisplayed: 'isSplashDisplayed',
-            isSupported: 'isRecorderSupported'
+            isSupported: 'isRecorderSupported',
+            currentQuery: 'currentQuery'
         })
     }
 </script>

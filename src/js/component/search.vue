@@ -10,7 +10,8 @@
 
     export default {
         computed: mapGetters({
-            currentQuery: 'currentQuery'
+            currentQuery: 'currentQuery',
+            searchesHistory: 'searchesHistory'
         })
     }
 </script>
