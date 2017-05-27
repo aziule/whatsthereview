@@ -1,10 +1,9 @@
 "use strict"
 
 class Movie {
-    constructor(type, name, year, pictureUrl, score) {
+    constructor(type, name, pictureUrl, score) {
         this.type = type;
         this.name = name;
-        this.year = year;
         this.pictureUrl = pictureUrl;
         this.score = score;
         this.matchingScore = null;

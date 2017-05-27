@@ -1,8 +1,8 @@
 <template>
-    <div id="app">
+    <section id="app" class="app container">
         <movies-list></movies-list>
         <recorder></recorder>
-    </div>
+    </section>
 </template>
 
 <script>

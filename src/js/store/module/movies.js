@@ -40,7 +40,6 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
         .then((movies) => {
             movies = Evaluator.evaluateMatchingScore(transcript, movies);
             movies = Filter.removeIrrelevantMovies(movies);
-            console.log(movies)
             commit(mutationsList.SET_MOVIES_LIST, { movies });
         })
         .catch((error) => {
@@ -48,7 +47,7 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
             console.error(error);
         })
         .then(() => {
-            commit('setIsNotFetchingMovies');
+            commit('setIsNotFetchingMovies'); // @todo fix
         });
 }
 

@@ -1,10 +1,13 @@
 <template>
-    <div class="recorder">
+    <div class="recorder"
+        v-bind:class="{
+            'recorder--recording': isRecording
+        }">
         <div class="recorder__loader"></div>
         <button
             class="recorder__record-btn"
             @click="startRecording">
-            {{ isRecording ? 'Please wait...' : 'Start recording' }}
+            {{ isRecording ? 'Recording... Say the name of a movie' : 'Start recording' }}
         </button>
     </div>
 </template>

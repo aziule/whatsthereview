@@ -1,0 +1,41 @@
+$color-recording-bg: rgba(255, 30, 30, 1);
+$color-recording-fg: white;
+
+.recorder {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $footer-height;
+
+    &__record-btn,
+    &__record-btn:active,
+    &__record-btn:focus,
+    &__record-btn:hover {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        background-color: $color-text-emphasised;
+        color: $color-text;
+        text-transform: uppercase;
+        border: none;
+
+        &--recording,
+        &--recording:active,
+        &--recording:focus,
+        &--recording:hover {
+            background-color: rgba(255, 0, 0, .8)!important;
+            border-color: red!important;
+        }
+    }
+
+    &--recording {
+        .recorder__record-btn,
+        .recorder__record-btn:active,
+        .recorder__record-btn:focus,
+        .recorder__record-btn:hover {
+            background-color: $color-recording-bg;
+            color: $color-recording-fg;
+        }
+    }
+}

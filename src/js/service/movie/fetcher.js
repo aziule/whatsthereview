@@ -26,7 +26,6 @@ MovieFetcher.prototype.fetchMovies = function(query) {
                     movies.push(new Movie(
                         Movie.TYPE_MOVIE,
                         apiData.movies[i].name,
-                        apiData.movies[i].year,
                         apiData.movies[i].image,
                         apiData.movies[i].meterScore
                     ));
@@ -36,7 +35,6 @@ MovieFetcher.prototype.fetchMovies = function(query) {
                     movies.push(new Movie(
                         Movie.TYPE_TV_SHOW,
                         apiData.tvSeries[i].title,
-                        apiData.tvSeries[i].year,
                         apiData.tvSeries[i].image,
                         apiData.tvSeries[i].meterScore
                     ));
