@@ -3,11 +3,17 @@
         v-bind:class="{
             'recorder--recording': isRecording
         }">
-        <div class="recorder__loader"></div>
         <button
             class="recorder__record-btn"
             @click="startRecording">
-            {{ isRecording ? 'Recording... Say the name of a movie' : 'Start recording' }}
+            <div class="recorder__record-btn__content" v-if="!isRecording">
+                <span class="material-icons recorder__record-btn__content__icon">mic</span>
+                Start recording
+            </div>
+            <div class="recorder__record-btn__content" v-if="isRecording">
+                <span class="material-icons recorder__record-btn__content__icon">fiber_manual_record</span>
+                Recording...
+            </div>
         </button>
     </div>
 </template>

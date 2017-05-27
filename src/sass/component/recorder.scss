@@ -13,6 +13,9 @@ $color-recording-fg: white;
     &__record-btn:active,
     &__record-btn:focus,
     &__record-btn:hover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
         width: 100%;
         margin: 0;
@@ -20,13 +23,15 @@ $color-recording-fg: white;
         color: $color-text;
         text-transform: uppercase;
         border: none;
+    }
 
-        &--recording,
-        &--recording:active,
-        &--recording:focus,
-        &--recording:hover {
-            background-color: rgba(255, 0, 0, .8)!important;
-            border-color: red!important;
+    &__record-btn__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__icon {
+            margin-right: 5px;
         }
     }
 
