@@ -7,7 +7,7 @@
             <h1>Oh no :(</h1>
             <p>{{ error }}</p>
         </div>
-        <div class="movies-list__empty content" v-if="movies.length === 0 && searchQuery && !error && searchesHistory.length > 0">
+        <div class="movies-list__empty content" v-if="movies.length === 0 && searchQuery && !error && wasUpdated">
             No movies found.
         </div>
         <movie-item
@@ -29,7 +29,7 @@
             isRecording: 'isRecording',
             isLoading: 'isLoading',
             error: 'moviesListError',
-            searchesHistory: 'searchesHistory'
+            wasUpdated: 'moviesListWasUpdated'
         }),
         components: {
             MovieItem

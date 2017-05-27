@@ -2,6 +2,7 @@
     color: $color-text;
     display: flex;
     flex-basis: 50%;
+    min-height: 100px;
 
     &__content-wrapper {
         display: flex;
@@ -59,7 +60,6 @@
 
     @media screen and (max-width: $break-1-col) {
         flex-basis: 100%;
-        min-height: 100px;
         padding: 10px 0;
 
         &__content-wrapper {

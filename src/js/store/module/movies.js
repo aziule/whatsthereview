@@ -8,18 +8,21 @@ import store from '../'
 const getters = {
     allMovies: state => Sorter.sortMovies(state.movies),
     isLoading: state => state.isLoading,
-    moviesListError: state => state.error
+    moviesListError: state => state.error,
+    moviesListWasUpdated: state => state.wasUpdated
 }
 
 const state = {
     isLoading: false,
     movies: [],
-    error: null
+    error: null,
+    wasUpdated: false // To know if at least one search has been done
 }
 
 const mutations = {
-    setMoviesList(state, movies) {
+    updateMoviesList(state, movies) {
         state.movies = movies;
+        state.wasUpdated = true;
     },
     setIsFetchingMovies(state) {
         state.isLoading = true;
@@ -53,10 +56,10 @@ actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
             movies = Evaluator.evaluateMatchingScore(transcript, movies);
             movies = Filter.removeIrrelevantMovies(movies);
             commit('setMoviesListError', null);
-            commit('setMoviesList', movies);
+            commit('updateMoviesList', movies);
         })
         .catch((error) => {
-            commit('setMoviesList', []);
+            commit('updateMoviesList', []);
             commit('setMoviesListError', 'An error occured when fetching the movies list.');
         })
         .then(() => {
