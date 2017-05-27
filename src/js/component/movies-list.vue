@@ -1,5 +1,5 @@
 <template>
-    <section class="row movies-list"
+    <section class="movies-list"
          v-bind:class="{
             'movies-list--faded': isRecording,
             'movies-list--loading': isLoading
