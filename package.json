@@ -35,7 +35,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p --progress"
   },
   "author": "Aziule (William Claude)",
   "license": "ISC"
