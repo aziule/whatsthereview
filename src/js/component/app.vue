@@ -1,5 +1,5 @@
 <template>
-    <section id="app" class="app container">
+    <section id="app" class="app">
         <movies-list></movies-list>
         <recorder></recorder>
     </section>
