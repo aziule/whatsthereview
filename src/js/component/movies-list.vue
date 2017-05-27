@@ -7,6 +7,9 @@
             <h1>Oh no :(</h1>
             <p>{{ error }}</p>
         </div>
+        <div class="movies-list__empty content" v-if="movies.length === 0 && searchQuery && !error">
+            No movies found.
+        </div>
         <movie-item
             v-for="movie in movies"
             v-bind:movie="movie"
@@ -22,6 +25,7 @@
     export default {
         computed: mapGetters({
             movies: 'allMovies',
+            searchQuery: 'currentQuery',
             isRecording: 'isRecording',
             isLoading: 'isLoading',
             error: 'moviesListError'
