@@ -37,6 +37,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --hot --https --inline --progress --colors --content-base build",
     "build": "webpack --progress --colors",
+    "heroku-postbuild": "npm run build",
     "start": "node server.js"
   },
   "author": "Aziule (William Claude)",
