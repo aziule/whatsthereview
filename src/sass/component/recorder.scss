@@ -11,19 +11,23 @@ $color-recording-fg: white;
 
     &__record-btn,
     &__record-btn:active,
-    &__record-btn:focus,
-    &__record-btn:hover {
+    &__record-btn:focus {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
         width: 100%;
         margin: 0;
-        background-color: $color-text-emphasised;
+        background-color: $color-pink;
+        @include transition(background-color ease-out 200ms);
         color: $color-text;
         text-transform: uppercase;
         border: none;
         font-size: 1.1em;
+    }
+
+    &__record-btn:hover {
+        background-color: $color-darkpink;
     }
 
     &__record-btn__content {

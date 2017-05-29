@@ -52,3 +52,19 @@ button:focus {
 button:hover {
     cursor: pointer;
 }
+
+strong {
+    color: $color-text;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+    color: $color-pink;
+    @include transition(color ease-out 200ms)
+}
+
+a:hover {
+    color: $color-darkpink;
+}
