@@ -36,35 +36,34 @@ const mutations = {
 };
 
 const actions = {
-    [actionsList.SEARCH_IN_PROGRESS] ({ commit }) {
+    [actionsList.SEARCH_IN_PROGRESS] ({commit}) {
         commit('setIsFetchingMovies');
     },
-    [actionsList.SEARCH_DONE] ({ commit }) {
+    [actionsList.SEARCH_DONE] ({commit}) {
         commit('setIsNotFetchingMovies');
+    },
+    [actionsList.ON_VOICE_RECORDED] ({state, commit}, transcript) {
+        if (state.isLoading) {
+            return;
+        }
+
+        store.dispatch(actionsList.SEARCH_IN_PROGRESS, transcript);
+
+        MovieFetcher.fetchMovies(transcript)
+            .then((movies) => {
+                movies = Evaluator.evaluateMatchingScore(transcript, movies);
+                movies = Filter.removeIrrelevantMovies(movies);
+                commit('setMoviesListError', null);
+                commit('updateMoviesList', movies);
+            })
+            .catch((error) => {
+                commit('updateMoviesList', []);
+                commit('setMoviesListError', 'An error occured when fetching the movies list.');
+            })
+            .then(() => {
+                store.dispatch(actionsList.SEARCH_DONE);
+            });
     }
-}
-
-actions[actionsList.ON_VOICE_RECORDED] = ({ state, commit }, transcript) => {
-    if (state.isLoading) {
-        return;
-    }
-
-    store.dispatch(actionsList.SEARCH_IN_PROGRESS, transcript);
-
-    MovieFetcher.fetchMovies(transcript)
-        .then((movies) => {
-            movies = Evaluator.evaluateMatchingScore(transcript, movies);
-            movies = Filter.removeIrrelevantMovies(movies);
-            commit('setMoviesListError', null);
-            commit('updateMoviesList', movies);
-        })
-        .catch((error) => {
-            commit('updateMoviesList', []);
-            commit('setMoviesListError', 'An error occured when fetching the movies list.');
-        })
-        .then(() => {
-            store.dispatch(actionsList.SEARCH_DONE);
-        });
 }
 
 export default {
