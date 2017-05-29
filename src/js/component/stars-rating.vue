@@ -1,8 +1,8 @@
 <template>
     <div class="stars-rating">
-        <span v-for="f in ratingInfo.full" class="stars-rating__star material-icons">star</span>
-        <span v-for="f in ratingInfo.half" class="stars-rating__star material-icons">star_half</span>
-        <span v-for="f in ratingInfo.empty" class="stars-rating__star material-icons">star_border</span>
+        <span v-for="i in ratingInfo.full" class="stars-rating__star material-icons">star</span>
+        <span v-for="i in ratingInfo.half" class="stars-rating__star material-icons">star_half</span>
+        <span v-for="i in ratingInfo.empty" class="stars-rating__star material-icons">star_border</span>
     </div>
 </template>
 
