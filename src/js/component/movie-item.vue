@@ -5,23 +5,19 @@
             'movie--matching':  movie.matchingScore === 100
         }">
         <div class="movie__content-wrapper">
-            <div
-                class="movie__picture"
-                :style="{
-                    'background-image': 'url(' + movie.pictureUrl + ')'
-                }">
+            <div class="movie__picture"
+                 :style="{
+                        'background-image': 'url(' + movie.pictureUrl + ')'
+                 }">
             </div>
             <div class="movie__details">
                 <div class="movie__name">
-                    <div class="movie__matching">
-                        PERFECT MATCH
-                    </div>
                     {{ movie.name }}
                 </div>
-                <div
-                        class="movie__score"
-                        v-if="movie.score !== undefined">
+                <div class="movie__score"
+                     v-if="movie.score !== undefined">
                     {{ movie.score }}%
+                    <stars-rating v-bind:pct="movie.score"></stars-rating>
                 </div>
             </div>
         </div>
@@ -29,10 +25,12 @@
 </template>
 
 <script>
+    import StarsRating from './stars-rating.vue'
+
     export default {
-        props: ['movie']
+        props: ['movie'],
+        components: {
+            StarsRating
+        }
     }
 </script>
-
-<style>
-</style>

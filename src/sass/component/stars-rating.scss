@@ -1,0 +1,10 @@
+$stars-width: 15px;
+
+.stars-rating {
+    display: flex;
+
+    &__star {
+        font-size: $stars-width;
+        color: $color-yellow;
+    }
+}
