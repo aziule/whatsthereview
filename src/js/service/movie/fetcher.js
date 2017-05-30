@@ -27,7 +27,8 @@ MovieFetcher.prototype.fetchMovies = function(query) {
                         Movie.TYPE_MOVIE,
                         apiData.movies[i].name,
                         apiData.movies[i].image,
-                        apiData.movies[i].meterScore
+                        apiData.movies[i].meterScore,
+                        null
                     ));
                 }
 
@@ -36,7 +37,8 @@ MovieFetcher.prototype.fetchMovies = function(query) {
                         Movie.TYPE_TV_SHOW,
                         apiData.tvSeries[i].title,
                         apiData.tvSeries[i].image,
-                        apiData.tvSeries[i].meterScore
+                        apiData.tvSeries[i].meterScore,
+                        null
                     ));
                 }
 
