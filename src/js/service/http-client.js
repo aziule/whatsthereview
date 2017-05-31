@@ -1,3 +1,5 @@
+"use strict"
+
 class HttpClient {
     static getJSON = (url) => {
         return new Promise(function(resolve, reject) {
