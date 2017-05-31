@@ -37,7 +37,7 @@ class MovieFetcher {
 
                     resolve(movies);
                 }).catch((err) => {
-                    reject();
+                    reject(err.httpStatusText);
                 });
         })
     }
