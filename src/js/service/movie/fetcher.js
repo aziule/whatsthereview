@@ -7,7 +7,6 @@ class MovieFetcher {
     url = 'https://www.rottentomatoes.com/api/private/v2.0/search';
 
     fetchMovies(query) {
-        // @todo: add caching using local storage
         var url = this.url + '?limit=10&q=' + query;
 
         return new Promise(function(resolve, reject) {
@@ -35,10 +34,9 @@ class MovieFetcher {
                             null
                         ));
                     }
-console.log(movies);
+
                     resolve(movies);
                 }).catch((err) => {
-                    console.log(err);
                     reject();
                 });
         })
