@@ -49,7 +49,8 @@ const actions = {
 
         store.dispatch(actionsList.SEARCH_IN_PROGRESS, transcript);
 
-        MovieFetcher.fetchMovies(transcript)
+        MovieFetcher
+            .fetchMovies(transcript)
             .then((movies) => {
                 movies = Evaluator.evaluateMatchingScore(transcript, movies);
                 movies = Filter.removeIrrelevantMovies(movies);
