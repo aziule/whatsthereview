@@ -1,3 +1,5 @@
+"use strict"
+
 import Movie from '../../../src/js/service/movie/model'
 import Evaluator from '../../../src/js/service/movie/evaluator'
 

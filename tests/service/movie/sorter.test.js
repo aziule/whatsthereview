@@ -1,3 +1,5 @@
+"use strict"
+
 import Movie from '../../../src/js/service/movie/model'
 import Sorter from '../../../src/js/service/movie/sorter'
 

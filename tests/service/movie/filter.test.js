@@ -1,3 +1,5 @@
+"use strict"
+
 import Movie from '../../../src/js/service/movie/model'
 import Filter from '../../../src/js/service/movie/filter'
 
