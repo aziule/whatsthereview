@@ -12,25 +12,25 @@ class MovieFetcher {
         return new Promise(function(resolve, reject) {
             HttpClient
                 .getJSON(url)
-                .then((apiData) => {
+                .then((jsonData) => {
                     var movies = [];
 
-                    for (var i = 0; i < apiData.movies.length; i++) {
+                    for (var i = 0; i < jsonData.movies.length; i++) {
                         movies.push(new Movie(
                             Movie.TYPE_MOVIE,
-                            apiData.movies[i].name,
-                            apiData.movies[i].image,
-                            apiData.movies[i].meterScore,
+                            jsonData.movies[i].name,
+                            jsonData.movies[i].image,
+                            typeof jsonData.movies[i].meterScore === 'undefined' ? null : jsonData.movies[i].meterScore,
                             null
                         ));
                     }
 
-                    for (var i = 0; i < apiData.tvSeries.length; i++) {
+                    for (var i = 0; i < jsonData.tvSeries.length; i++) {
                         movies.push(new Movie(
                             Movie.TYPE_TV_SHOW,
-                            apiData.tvSeries[i].title,
-                            apiData.tvSeries[i].image,
-                            apiData.tvSeries[i].meterScore,
+                            jsonData.tvSeries[i].title,
+                            jsonData.tvSeries[i].image,
+                            typeof jsonData.movies[i].meterScore === 'undefined' ? null : jsonData.tvSeries[i].meterScore,
                             null
                         ));
                     }
