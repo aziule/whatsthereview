@@ -1,6 +1,6 @@
 "use strict"
 
-var Filter = {
+const filter = {
     removeIrrelevantMovies(movies) {
         return movies.filter((movie) => {
             if (movie.score !== undefined) {
@@ -12,4 +12,4 @@ var Filter = {
     }
 };
 
-export default Filter;
+export default filter;

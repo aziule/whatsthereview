@@ -1,7 +1,7 @@
 "use strict"
 
-class Sorter {
-    static sortMovies(movies) {
+const sorter = {
+    sortMovies: (movies) => {
         // Sort movies by matching score or alphabetically
         return movies.sort(function(a, b) {
             if (a.matchingScore === b.matchingScore) {
@@ -21,4 +21,4 @@ class Sorter {
     }
 };
 
-export default Sorter;
+export default sorter;

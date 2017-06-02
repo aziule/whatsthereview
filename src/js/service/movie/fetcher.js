@@ -3,11 +3,11 @@
 import Movie from './model'
 import HttpClient from '../http-client'
 
-class MovieFetcher {
-    url = 'https://www.rottentomatoes.com/api/private/v2.0/search';
+const URL_BASE = 'https://www.rottentomatoes.com/api/private/v2.0/search';
 
-    static fetchMovies(query) {
-        var url = this.url + '?limit=10&q=' + query;
+const movieFetcher = {
+    fetchMovies: (query) => {
+        var url = URL_BASE + '?limit=10&q=' + query;
 
         return new Promise(function(resolve, reject) {
             HttpClient
@@ -43,4 +43,4 @@ class MovieFetcher {
     }
 }
 
-export default MovieFetcher;
+export default movieFetcher;

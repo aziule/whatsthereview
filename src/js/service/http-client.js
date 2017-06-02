@@ -1,7 +1,7 @@
 "use strict"
 
-class HttpClient {
-    getJSON = (url) => {
+const httpClient = {
+    getJSON: (url) => {
         return new Promise(function(resolve, reject) {
             var xhr = new XMLHttpRequest();
 
@@ -33,4 +33,4 @@ class HttpClient {
     }
 }
 
-export default HttpClient;
+export default httpClient;

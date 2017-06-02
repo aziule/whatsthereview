@@ -23,8 +23,8 @@ var getDoubleMetaphoneMatchingPct = (a, b) => {
     return 0;
 }
 
-class Evaluator {
-    static evaluateMatchingScore(needle, movies) {
+const evaluator = {
+    evaluateMatchingScore: (needle, movies) => {
         for (var i = 0; i < movies.length; i++) {
             movies[i].matchingScore = getDoubleMetaphoneMatchingPct(needle, movies[i].name);
         }
@@ -33,4 +33,4 @@ class Evaluator {
     }
 };
 
-export default Evaluator;
+export default evaluator;
