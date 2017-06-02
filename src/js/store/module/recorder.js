@@ -2,13 +2,15 @@ import store from '../'
 import SpeechRecognition from '../../service/speech-recognition'
 import * as actionsList from '../actions-list';
 
+const speechRecognition = SpeechRecognition(window);
+
 const getters = {
     isRecording: state => state.isRecording,
     isRecorderSupported: state => state.isSupported
 }
 
 const state = {
-    isSupported: SpeechRecognition !== null,
+    isSupported: speechRecognition !== null,
     isAuthorised: false,
     isRecording: false
 };
@@ -25,18 +27,18 @@ const actions = {
 
         state.isRecording = true;
 
-        SpeechRecognition.start();
+        speechRecognition.start();
 
-        SpeechRecognition.onend = function() {
+        speechRecognition.onend = function() {
             state.isRecording = false;
         };
 
-        SpeechRecognition.onresult = function() {
+        speechRecognition.onresult = function() {
             var transcript = event.results[0][0].transcript;
             store.dispatch(actionsList.ON_VOICE_RECORDED, transcript);
         };
 
-        SpeechRecognition.onerror = function(e) {
+        speechRecognition.onerror = function(e) {
             throw new Error('An error occured');
         };
     }
