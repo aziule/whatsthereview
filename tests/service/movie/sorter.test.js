@@ -3,7 +3,7 @@
 import Movie from '../../../src/js/service/movie/model'
 import Sorter from '../../../src/js/service/movie/sorter'
 
-test('sorts movies', () => {
+it('sorts movies', () => {
     const m1 = new Movie(Movie.TYPE_MOVIE, 'Fight Club', 'pic', 50, 50);
     const m2 = new Movie(Movie.TYPE_MOVIE, 'Snatch', 'pic', 50, 100);
     const m3 = new Movie(Movie.TYPE_TV_SHOW, 'Snatch', 'pic', 50, 100);

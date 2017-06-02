@@ -2,7 +2,7 @@
 
 import Movie from '../../../src/js/service/movie/model'
 
-test('model creation', () => {
+it('creates movie models', () => {
     const type = Movie.TYPE_MOVIE;
     const name = 'Avatar';
     const pictureUrl = 'http://some-image-repo.com/image.png';
