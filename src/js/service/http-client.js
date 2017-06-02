@@ -1,7 +1,7 @@
 "use strict"
 
 class HttpClient {
-    static getJSON = (url) => {
+    getJSON = (url) => {
         return new Promise(function(resolve, reject) {
             var xhr = new XMLHttpRequest();
 

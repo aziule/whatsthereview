@@ -6,7 +6,7 @@ import HttpClient from '../http-client'
 class MovieFetcher {
     url = 'https://www.rottentomatoes.com/api/private/v2.0/search';
 
-    fetchMovies(query) {
+    static fetchMovies(query) {
         var url = this.url + '?limit=10&q=' + query;
 
         return new Promise(function(resolve, reject) {
@@ -43,4 +43,4 @@ class MovieFetcher {
     }
 }
 
-export default new MovieFetcher();
+export default MovieFetcher;
