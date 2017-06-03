@@ -12,4 +12,8 @@
     &__query {
         color: $color-text;
     }
+
+    @include for-phone-only {
+        padding-left: 0;
+    }
 }

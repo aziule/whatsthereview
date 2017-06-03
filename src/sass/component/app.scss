@@ -13,7 +13,7 @@
         margin-top: $top-nav-min-height;
 
         @include for-phone-only {
-            padding: 0 20px;
+            padding: 10px 20px;
         }
 
         @include for-tablet-portrait-up {
