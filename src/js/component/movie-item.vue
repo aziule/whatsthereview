@@ -15,7 +15,7 @@
                     {{ movie.name }}
                 </div>
                 <div class="movie__score"
-                     v-if="movie.score !== undefined">
+                     v-if="movie.score !== null">
                     {{ movie.score }}%
                     <stars-rating v-bind:pct="movie.score"></stars-rating>
                 </div>
