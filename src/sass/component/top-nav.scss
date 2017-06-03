@@ -1,0 +1,23 @@
+$color-nav-background: black;
+
+.top-nav {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    padding: 0 20px;
+    background-color: $color-nav-background;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    align-items: center;
+    height: $top-nav-height;
+    min-height: $top-nav-min-height;
+
+    &__app-name {
+        display: flex;
+        font-size: 1rem;
+        text-transform: uppercase;
+        margin: 0;
+        flex: 1;
+    }
+}

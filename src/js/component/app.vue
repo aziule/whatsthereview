@@ -1,6 +1,6 @@
 <template>
     <section id="app" class="app">
-        <lang-selector></lang-selector>
+        <top-nav></top-nav>
         <div class="app__content">
             <splash></splash>
             <search></search>
@@ -15,15 +15,15 @@
     import Recorder from './recorder.vue'
     import Search from './search.vue'
     import Splash from './splash.vue'
-    import LangSelector from './lang-selector.vue'
+    import TopNav from './top-nav.vue'
 
     export default {
         components: {
-            LangSelector,
             MoviesList,
             Recorder,
             Search,
-            Splash
+            Splash,
+            TopNav
         }
     }
 </script>

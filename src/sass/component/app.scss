@@ -4,16 +4,16 @@
     display: flex;
     -webkit-box-orient: vertical;
     flex-direction: column;
-    padding: 20px;
     box-sizing: border-box;
     color: $color-text-secondary;
 
     &__content {
         display: flex;
         flex-direction: column;
+        margin-top: $top-nav-min-height;
 
         @include for-phone-only {
-            padding: 0;
+            padding: 0 20px;
         }
 
         @include for-tablet-portrait-up {
