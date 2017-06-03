@@ -1,5 +1,6 @@
 <template>
     <section id="app" class="app">
+        <lang-selector></lang-selector>
         <div class="app__content">
             <splash></splash>
             <search></search>
@@ -14,11 +15,13 @@
     import Recorder from './recorder.vue'
     import Search from './search.vue'
     import Splash from './splash.vue'
+    import LangSelector from './lang-selector.vue'
 
     export default {
         components: {
-            Recorder,
+            LangSelector,
             MoviesList,
+            Recorder,
             Search,
             Splash
         }

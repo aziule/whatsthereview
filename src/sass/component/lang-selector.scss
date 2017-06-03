@@ -1,0 +1,25 @@
+.lang-selector {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    &__langs-list {
+        display: flex;
+    }
+
+    &__lang-item {
+        margin-left: 5px;
+        font-size: .8rem;
+        cursor: pointer;
+        @include transition(color ease-out 200ms);
+
+        &--active {
+            color: $color-text;
+            cursor: default;
+        }
+
+        &:hover {
+            color: $color-text;
+        }
+    }
+}
