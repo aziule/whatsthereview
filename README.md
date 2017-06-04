@@ -1,4 +1,4 @@
-# STT movie ranking
+# What's the review
 
 ```
 npm install
