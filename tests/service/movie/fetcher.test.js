@@ -6,7 +6,7 @@ import HttpClient from '../../../src/js/service/http-client'
 import Movie from '../../../src/js/service/movie/model'
 
 it('fetches movies after calling the API', () => {
-    HttpClient.getJSON = jest.fn().mockImplementation(url => {
+    HttpClient.getJSON = jest.fn((url) => {
         return Promise.resolve(JSON.parse(fs.readFileSync('./tests/__mockData__/search-snatch.json')));
     });
 
@@ -29,7 +29,7 @@ it('fetches movies after calling the API', () => {
 });
 
 it('handles HTTP errors', () => {
-    HttpClient.getJSON = jest.fn().mockImplementation(url => {
+    HttpClient.getJSON = jest.fn((url) => {
         return Promise.reject({
             httpStatus: 500,
             httpStatusText: 'The error message'
