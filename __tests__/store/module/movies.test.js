@@ -2,6 +2,50 @@
 
 import MoviesModule from '../../../src/js/store/module/movies'
 
+describe('Movies module getters', () => {
+   it('gets the movies list', () => {
+       const state = {
+           movies: [
+               'Bloodsport',
+               'Hard Target',
+           ]
+       };
+
+       const result = MoviesModule.getters.allMovies(state);
+       expect(result).toEqual([
+           'Bloodsport',
+           'Hard Target',
+       ]);
+   })
+
+   it('gets the loading state', () => {
+       const state = {
+           isLoading: false
+       };
+
+       const result = MoviesModule.getters.isLoading(state);
+       expect(result).toBe(false);
+   });
+
+   it('gets the movies list error', () => {
+       const state = {
+           error: 'JCVD movies not found!'
+       };
+
+       const result = MoviesModule.getters.moviesListError(state);
+       expect(result).toBe('JCVD movies not found!');
+   });
+
+   it('gets the updating state', () => {
+       const state = {
+           wasUpdated: false
+       };
+
+       const result = MoviesModule.getters.moviesListWasUpdated(state);
+       expect(result).toBe(false);
+   });
+});
+
 describe('Movies module mutations', () => {
     it('updates the movies list', () => {
         const { updateMoviesList } = MoviesModule.mutations;
