@@ -1,9 +1,8 @@
-import store from '../'
 import SpeechRecognition from '../../service/speech-recognition'
 import * as actionsList from '../actions-list';
 
 const speechRecognition = SpeechRecognition(window);
-
+console.log('init speechrec');
 const getters = {
     isRecording: state => state.isRecording,
     isRecorderSupported: state => state.isSupported
@@ -16,9 +15,9 @@ const state = {
 };
 
 const actions = {
-    [actionsList.START_RECORDING] ({ state }) {
+    [actionsList.START_RECORDING] ({ state, dispatch }) {
         if (!state.isSupported) {
-            throw new Error('The audio API is not active on your browser');
+            throw new Error('The audio API is not supported by your browser');
         }
 
         if (state.isRecording) {
@@ -35,7 +34,7 @@ const actions = {
 
         speechRecognition.onresult = function() {
             var transcript = event.results[0][0].transcript;
-            store.dispatch(actionsList.ON_VOICE_RECORDED, transcript);
+            dispatch(actionsList.ON_VOICE_RECORDED, transcript);
         };
 
         speechRecognition.onerror = function(e) {

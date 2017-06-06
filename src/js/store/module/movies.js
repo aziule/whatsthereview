@@ -3,7 +3,6 @@ import MovieFetcher from '../../service/movie/fetcher'
 import Evaluator from '../../service/movie/evaluator'
 import Filter from '../../service/movie/filter'
 import Sorter from '../../service/movie/sorter'
-import store from '../'
 
 const getters = {
     allMovies: state => Sorter.sortMovies(state.movies),
@@ -36,18 +35,18 @@ const mutations = {
 };
 
 const actions = {
-    [actionsList.SEARCH_IN_PROGRESS] ({commit}) {
+    [actionsList.SEARCH_IN_PROGRESS] ({ commit }) {
         commit('setIsFetchingMovies');
     },
-    [actionsList.SEARCH_DONE] ({commit}) {
+    [actionsList.SEARCH_DONE] ({ commit }) {
         commit('setIsNotFetchingMovies');
     },
-    [actionsList.ON_VOICE_RECORDED] ({state, commit}, transcript) {
+    [actionsList.ON_VOICE_RECORDED] ({ state, commit, dispatch }, transcript) {
         if (state.isLoading) {
             return;
         }
 
-        store.dispatch(actionsList.SEARCH_IN_PROGRESS, transcript);
+        dispatch(actionsList.SEARCH_IN_PROGRESS, transcript);
 
         MovieFetcher
             .fetchMovies(transcript)
@@ -62,7 +61,7 @@ const actions = {
                 commit('setMoviesListError', 'An error occured when fetching the movies list.');
             })
             .then(() => {
-                store.dispatch(actionsList.SEARCH_DONE);
+                dispatch(actionsList.SEARCH_DONE);
             });
     }
 }
