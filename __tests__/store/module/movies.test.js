@@ -2,6 +2,31 @@
 
 import MoviesModule from '../../../src/js/store/module/movies'
 
+describe('Movies module actions', () => {
+    it('updates the state when a search is in progress', () => {
+        const commit = jest.fn();
+
+        MoviesModule.actions.SEARCH_IN_PROGRESS({ commit });
+        expect(commit).toBeCalledWith('setIsFetchingMovies');
+    });
+
+    it('updates the state when a search is done', () => {
+        const commit = jest.fn();
+
+        MoviesModule.actions.SEARCH_DONE({ commit });
+        expect(commit).toBeCalledWith('setIsNotFetchingMovies');
+    });
+
+    it('does not fetch movies again when a search is already in progress', () => {
+        const state = {
+            isLoading: true
+        };
+
+        const result = MoviesModule.actions.ON_VOICE_RECORDED({ state });
+        expect(result).toBeUndefined();
+    });
+});
+
 describe('Movies module getters', () => {
    it('gets the movies list', () => {
        const state = {
