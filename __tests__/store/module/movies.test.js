@@ -25,6 +25,20 @@ describe('Movies module actions', () => {
         const result = MoviesModule.actions.ON_VOICE_RECORDED({ state });
         expect(result).toBeUndefined();
     });
+
+    // todo
+    it('fetches movies when voice is recorded', () => {
+        const state = {
+            isLoading: false
+        };
+
+        const commit = jest.fn();
+        const dispatch = jest.fn();
+        const transcript = 'JCVD movies';
+
+        MoviesModule.actions.ON_VOICE_RECORDED({ state, commit, dispatch }, transcript);
+        expect(dispatch).toBeCalledWith('SEARCH_IN_PROGRESS', transcript);
+    });
 });
 
 describe('Movies module getters', () => {
