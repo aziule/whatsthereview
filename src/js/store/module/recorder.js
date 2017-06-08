@@ -1,8 +1,8 @@
 import SpeechRecognition from '../../service/speech-recognition'
 import * as actionsList from '../actions-list';
 
-const speechRecognition = SpeechRecognition(window);
-console.log('init speechrec');
+const speechRecognition = SpeechRecognition.getSpeechRecognitionObject(window);
+
 const getters = {
     isRecording: state => state.isRecording,
     isRecorderSupported: state => state.isSupported
@@ -10,7 +10,6 @@ const getters = {
 
 const state = {
     isSupported: speechRecognition !== null,
-    isAuthorised: false,
     isRecording: false
 };
 
@@ -26,13 +25,11 @@ const actions = {
 
         state.isRecording = true;
 
-        speechRecognition.start();
-
         speechRecognition.onend = function() {
             state.isRecording = false;
         };
 
-        speechRecognition.onresult = function() {
+        speechRecognition.onresult = function(event) {
             var transcript = event.results[0][0].transcript;
             dispatch(actionsList.ON_VOICE_RECORDED, transcript);
         };
@@ -40,6 +37,8 @@ const actions = {
         speechRecognition.onerror = function(e) {
             throw new Error('An error occured');
         };
+
+        speechRecognition.start();
     }
 };
 
