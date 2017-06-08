@@ -7,7 +7,7 @@ import Movie from '../../../src/js/service/movie/model'
 
 it('fetches movies after calling the API', () => {
     HttpClient.getJSON = jest.fn((url) => {
-        return Promise.resolve(JSON.parse(fs.readFileSync('./tests/__mockData__/search-snatch.json')));
+        return Promise.resolve(JSON.parse(fs.readFileSync('./__tests__/__mockData__/search-snatch.json')));
     });
 
     Fetcher.fetchMovies("query").then((movies) => {
