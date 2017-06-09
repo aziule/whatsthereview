@@ -40,3 +40,13 @@ npm run dev
 ```
 npm test
 ```
+
+## Roadmap
+- [ ] Manage different languages
+- [ ] Store searches in internal storage for pseudo-offline use
+- [ ] Handle SSL
+- [ ] Add some mobile app-like navigation
+- [ ] Make it a progressive web app
+- [ ] Add tests on VueJS components
+- [ ] Better splash screen
+- [ ] Create and split dev / prod webpack config
