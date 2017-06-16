@@ -42,5 +42,5 @@
     "start": "node server.js"
   },
   "author": "Aziule (William Claude)",
-  "license": "ISC"
+  "license": "MIT"
 }
