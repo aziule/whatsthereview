@@ -1,7 +1,7 @@
 "use strict"
 
 const speechRecognition = {
-    getSpeechRecognitionObject(window) {
+    detect(window) {
         const WindowSpeechRecognition = window.SpeechRecognition ||
             window.webkitSpeechRecognition ||
             window.mozSpeechRecognition ||

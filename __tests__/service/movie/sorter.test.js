@@ -8,6 +8,12 @@ describe('Movie sorter service', () => {
         const m1 = new Movie(Movie.TYPE_MOVIE, 'Fight Club', 'pic', 50, 50);
         const m2 = new Movie(Movie.TYPE_MOVIE, 'Snatch', 'pic', 50, 100);
         const m3 = new Movie(Movie.TYPE_TV_SHOW, 'Snatch', 'pic', 50, 100);
+        const m3 = Movie.tvShow({
+          title: 'Snatch',
+          pictureUrl: 'pic',
+          score: 50,
+          matchingScore: 100,
+        })
         const m4 = new Movie(Movie.TYPE_MOVIE, 'Django', 'pic', 50, 100);
         const m5 = new Movie(Movie.TYPE_MOVIE, 'Avatar', 'pic', 50, 50);
         const m6 = new Movie(Movie.TYPE_MOVIE, 'Flight', 'pic', 50, 0);

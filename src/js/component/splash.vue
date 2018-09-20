@@ -1,5 +1,5 @@
 <template>
-    <section class="splash" v-if="!currentQuery">
+    <section class="splash">
         <h1>Welcome</h1>
         <div v-if="!isSupported">
             <p>
@@ -10,7 +10,7 @@
                 You can download Chrome <a href="https://www.google.com/chrome/browser/desktop/">here</a>.
             </p>
         </div>
-        <div v-if="isSupported">
+        <div v-else>
             <p>
                 <ul>
                     <li><span class="emphasized">1</span> Click on "Look for a movie"</li>
@@ -24,12 +24,12 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-
     export default {
-        computed: mapGetters({
-            isSupported: 'isRecorderSupported',
-            currentQuery: 'currentQuery'
-        })
+      props: {
+        isSupported: {
+          type: Boolean,
+          required: true
+        }
+      }
     }
 </script>
