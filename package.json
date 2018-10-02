@@ -1,7 +1,7 @@
 {
   "name": "whats-the-review",
   "version": "1.0.0",
-  "description": "",
+  "description": "Use speech recognition to find, in an easy and fast way, ratings about a movie. See the project live at http://whatsthe.review",
   "main": "server.js",
   "dependencies": {
     "app-module-path": "^2.2.0",
@@ -10,6 +10,7 @@
     "gulp-cli": "^1.3.0",
     "milligram": "^1.3.0",
     "vue": "^2.3.3",
+    "vue-resource": "^1.5.1",
     "vuex": "^2.3.1"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 # What's the review
 
-Use speech recognition to find, in an easy and fast way, ratings about a movie. See the project live at [http://whatsthe.review/](http://whatsthe.review/)
+Use speech recognition to find, in an easy and fast way, ratings about a movie. See the project live at [http://whatsthe.review](http://whatsthe.review)
 
 ## Everything starts with a story
 I have always enjoyed movies, and by "movies" I mean **good** movies.
