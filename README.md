@@ -1,27 +1,29 @@
 # What's the review
 
-Source code of [http://whatsthe.review](http://whatsthe.review).
+Use speech recognition to find, in an easy and fast way, ratings about a movie. See the project live at [http://whatsthe.review/](http://whatsthe.review/)
 
 ## Everything starts with a story
-I have always enjoyed movies. And by "movies", I mean **good** movies. I also use Netflix a lot.
+I have always enjoyed movies, and by "movies" I mean **good** movies.
 
-But the following typical scenario comes when I want to watch a movie with my girlfriend:
+I mainly use Netflix to find what show to watch, but it does not provide, in my opinion, a good rating to know if a movie
+was appreciated by the public or not. Hence, the following typical scenario comes when I want to watch a movie:
+
 - Dinner is ready, waiting to be eaten
-- Start Netflix and start browsing movies
-- As Netflix's rating is not very good, open the Mac and, for every interesting movie synopsis, manually check for it on Rotten Tomatoes 
-(which is the most reliable source for movies rating IMO)
-- If the movie is below 60-70% (which happens often), check another movie
+- I start Netflix and look for movies
+- As Netflix does not provide rating for its movies, I go to my Mac and, for every interesting movie synopsis,
+ I manually check for its rating on Rotten Tomatoes - which is the most reliable source for movies rating IMO
+- If the movie is below 60-70%, I check another movie and start again
 
 As a result:
-- We end up looking for movies for 10 minutes
-- We have to manually check for tens of movies - how annoying...
-- We are desperate and finally select a random movie
-- Dinner is cold!
+- Finding a decent movie takes ages
+- I usually have to check for tens of movies and switch between my Mac and the remote control
+- I end up desperate and finally select a random movie
+- Most importantly: dinner is cold!
 
 So, from all this laziness and frustration, I quickly prototyped [http://whatsthe.review](http://whatsthe.review) to solve:
 - How not to have to manually check for movies ratings
-- How to be quicker when looking for this rating
-- How to eat hot
+- How to get ratings quicker
+- How to eat hot!
 
 ## Technologies
 - NodeJS server for simple static files serving
