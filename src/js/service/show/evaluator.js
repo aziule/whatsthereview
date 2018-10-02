@@ -24,12 +24,12 @@ var getDoubleMetaphoneMatchingPct = (a, b) => {
 }
 
 const evaluator = {
-    evaluateMatchingScore: (needle, movies) => {
-        for (var i = 0; i < movies.length; i++) {
-            movies[i].matchingScore = getDoubleMetaphoneMatchingPct(needle, movies[i].name);
+    addMatchingScore: (needle, shows) => {
+        for (var i = 0; i < shows.length; i++) {
+            shows[i].matchingScore = getDoubleMetaphoneMatchingPct(needle, shows[i].name);
         }
 
-        return movies;
+        return shows;
     }
 };
 

@@ -1,46 +1,50 @@
 "use strict"
 
-import Movie from './model'
+import Show from './show'
 import HttpClient from '../http-client'
 
 const URL_BASE = 'https://www.rottentomatoes.com/api/private/v2.0/search';
 
-const movieFetcher = {
-    fetchMovies: (query) => {
+const showFetcher = {
+    fetchShows: (query) => {
         var url = URL_BASE + '?limit=10&q=' + query;
 
         return new Promise(function(resolve, reject) {
             HttpClient
                 .getJSON(url)
                 .then((jsonData) => {
-                    var movies = [];
+                    var shows = [];
 
                     for (var i = 0; i < jsonData.movies.length; i++) {
-                        movies.push(new Movie(
-                            Movie.TYPE_MOVIE,
+                        shows.push(Show.movie(
                             jsonData.movies[i].name,
                             jsonData.movies[i].image,
-                            typeof jsonData.movies[i].meterScore === 'undefined' ? null : jsonData.movies[i].meterScore,
-                            null
+                            {
+                                score: typeof jsonData.movies[i].meterScore === 'undefined' ? null : jsonData.movies[i].meterScore
+                            }
                         ));
                     }
 
                     for (var i = 0; i < jsonData.tvSeries.length; i++) {
-                        movies.push(new Movie(
-                            Movie.TYPE_TV_SHOW,
+                        shows.push(Show.tvShow(
                             jsonData.tvSeries[i].title,
                             jsonData.tvSeries[i].image,
-                            typeof jsonData.movies[i].meterScore === 'undefined' ? null : jsonData.tvSeries[i].meterScore,
-                            null
+                            {
+                                score: typeof jsonData.tvSeries[i].meterScore === 'undefined' ? null : jsonData.tvSeries[i].meterScore
+                            }
                         ));
                     }
 
-                    resolve(movies);
+                    resolve(shows);
                 }).catch((err) => {
-                    reject(err.httpStatusText);
+                    reject(
+                        err.httpStatusText
+                            ? err.httpStatusText
+                            : 'Something went wrong'
+                    );
                 });
         })
     }
 }
 
-export default movieFetcher;
+export default showFetcher;

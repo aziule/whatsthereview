@@ -1,16 +1,17 @@
 <template>
-    <section class="search" v-if="currentQuery !== null">
+    <section class="search">
         <div class="search__label">Results&nbsp;for</div>
-        <div class="search__query">{{ currentQuery }}</div>
+        <div class="search__query">{{ query }}</div>
     </section>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-
     export default {
-        computed: mapGetters({
-            currentQuery: 'currentQuery'
-        })
+        props: {
+            query: {
+                type: String,
+                required: true
+            }
+        }
     }
 </script>

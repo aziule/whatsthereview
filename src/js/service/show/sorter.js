@@ -1,9 +1,9 @@
 "use strict"
 
 const sorter = {
-    sortMovies: (movies) => {
-        // Sort movies by matching score or alphabetically
-        return movies.sort(function(a, b) {
+    sortShows: (shows) => {
+        // Sort shows by matching score or alphabetically
+        return shows.sort(function(a, b) {
             if (a.matchingScore === b.matchingScore) {
                 if (a.name < b.name) {
                     return -1;

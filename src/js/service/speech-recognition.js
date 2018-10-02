@@ -1,23 +1,48 @@
 "use strict"
 
+class SpeechRecognition {
+    constructor(recorder) {
+        this.recorder = recorder
+    }
+
+    record () {
+        return new Promise((resolve, reject) => {
+            this.recorder.onend = function() {
+                return resolve()
+            };
+
+            this.recorder.onresult = function(event) {
+                var transcript = event.results[0][0].transcript;
+                return resolve(transcript)
+            };
+
+            this.recorder.onerror = function() {
+                return reject('An error occurred')
+            };
+
+            this.recorder.start();
+        })
+    }
+}
+
 const speechRecognition = {
-    getSpeechRecognitionObject(window) {
+    detect(window) {
         const WindowSpeechRecognition = window.SpeechRecognition ||
             window.webkitSpeechRecognition ||
             window.mozSpeechRecognition ||
             window.msSpeechRecognition ||
             window.oSpeechRecognition;
 
-        let recognition = null;
+        let recorder = null;
 
         if (WindowSpeechRecognition) {
-            recognition = new WindowSpeechRecognition();
-            recognition.lang = 'en-GB';
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
+            recorder = new WindowSpeechRecognition();
+            recorder.lang = 'en-GB';
+            recorder.interimResults = false;
+            recorder.maxAlternatives = 1;
         }
 
-        return recognition;
+        return new SpeechRecognition(recorder);
     }
 };
 
